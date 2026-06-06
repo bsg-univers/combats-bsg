@@ -5,12 +5,18 @@ on:
   schedule:
     - cron: "0 4 * * *"
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
@@ -23,7 +29,6 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        # Installation des deux modules requis pour la nouvelle méthode d'authentification
         run: npm install google-spreadsheet google-auth-library
 
       - name: Export sheets
@@ -36,6 +41,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/*.json
-          # Le "|| exit 0" évite que le workflow ne plante s'il n'y a aucun changement dans les données
           git commit -m "Update data from Google Sheets" || exit 0
           git push
