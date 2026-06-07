@@ -1,17 +1,14 @@
 import fs from "fs";
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { GoogleAuth } from "google-auth-library";
+import { JWT } from "google-auth-library";
 
-const auth = new GoogleAuth({
+const serviceAccountAuth = new JWT({
+  email: process.env.GSERVICE_EMAIL,
+  key: process.env.GSERVICE_KEY.replace(/\\n/g, "\n"),
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
-const client = await auth.getClient();
-
-const doc = new GoogleSpreadsheet(
-  process.env.GSHEET_ID,
-  client
-);
+const doc = new GoogleSpreadsheet(process.env.GSHEET_ID, serviceAccountAuth);
 
 async function run() {
   await doc.loadInfo();
