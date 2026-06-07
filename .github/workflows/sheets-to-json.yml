@@ -41,4 +41,3 @@ steps:
       # Le "|| exit 0" évite que le workflow ne plante s'il n'y a aucun changement dans les données
       git commit -m "Update data from Google Sheets" || exit 0
       git push
-```
