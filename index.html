@@ -1113,16 +1113,14 @@ audio {
 /* Effet plus lumineux quand on joue la musique */
 .bsg-audio-player.is-playing .bsg-whale-btn img {
     filter:
-        brightness(1.75)
-        contrast(1.45)
-        saturate(3.2)
-        sepia(0.35)
-        hue-rotate(10deg)
-        drop-shadow(0 0 8px rgba(255, 170, 40, 0.85))
-        drop-shadow(0 0 18px rgba(255, 120, 20, 0.65))
-        drop-shadow(0 0 32px rgba(255, 90, 10, 0.45));
+        brightness(1.35)
+        contrast(1.2)
+        saturate(1.1)
+        drop-shadow(0 -3px 6px rgba(243, 195, 0, 0.65))
+        drop-shadow(0 0 10px rgba(243, 195, 0, 0.45))
+        drop-shadow(0 2px 2px rgba(243, 195, 0, 0.35));
 
-    transition: filter 0.25s ease;
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .bsg-time-container {
