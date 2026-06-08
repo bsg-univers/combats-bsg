@@ -40,7 +40,7 @@
 }
 
 :root{
-  --primary:#FCFCFC;
+  --primary:#d2b347;
 
   --black-void:#050608;
   --blue-abyss:#031b28;
@@ -1204,7 +1204,7 @@ audio {
     <div id="episodes_list"></div>
 </div>
 <a href="https://baleinesousgravillon.com/" target="_blank" id="logo-link">
-    <img id="player-img" class="is-logo" src="https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png" alt="Logo">
+    <img id="player-img" class="is-logo" src="https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/cobats.png" alt="Logo">
 </a>
 <div class="player-container">
 
@@ -1381,7 +1381,7 @@ async function loadPlaylists() {
  function resetPlayerImage() {
     const pImg = document.getElementById('player-img');
     if (pImg) {
-        pImg.src = "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png";
+        pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
         pImg.classList.remove('is-episode', 'zoomed');
         pImg.classList.add('is-logo');
     }
@@ -1986,7 +1986,7 @@ async function play(i) {
             pImg.src = episode.image;
             pImg.classList.replace('is-logo', 'is-episode');
         } else {
-            pImg.src = "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png";
+            pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
             pImg.classList.replace('is-episode', 'is-logo');
         }
     }
@@ -2019,7 +2019,7 @@ function updateMediaSession(title) {
         artist: "Baleine sous gravillon",
         album: "Le podcast du Vivant",
         artwork: [
-            { src: 'https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png', sizes: '270x270', type: 'image/png' },
+            { src: 'https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png', sizes: '270x270', type: 'image/png' },
             { src: 'https://image.ausha.co/CQMRa8hZ950ZAamQlgLxjsA38VuxGAXyvYCZXFXK_400x400.jpeg', sizes: '400x400', type: 'image/jpeg' }
         ]
     });
@@ -2098,7 +2098,7 @@ window.addEventListener('scroll', function() {
         logo.style.opacity = Math.max(opacity, 0);
     }
 });
-document.getElementById('player-img').src = "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png"; 
+document.getElementById('player-img').src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png"; 
 </script>
     <div id="toast">Lien de la série copié !</div>
 </body>
