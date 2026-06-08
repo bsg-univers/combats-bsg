@@ -212,15 +212,6 @@ header {
     flex-shrink: 0;
     margin-right: 10.5px;
     margin-top: 12px;
-    
-    /* 1. Suppression de l'animation pulse-border */
-    /* animation: pulse-border 12s infinite ease-in-out; <-- Supprimé */
-
-    /* 2. Ajout de la douce ombre jaune */
-    /* On mélange une ombre de profondeur noire et un halo jaune (rgba(210, 179, 71, 0.4)) */
-
-/*    box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 15px rgba(210, 179, 71, 0.3); */
-
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
@@ -228,8 +219,6 @@ header {
 /* Optionnel : Un léger effet au survol pour garder du dynamisme sans vider la batterie */
 .btn-explore-themes:hover {
     transform: translateY(-2px);
- 
-/*   box-shadow: 0 6px 15px rgba(210, 179, 71, 0.6); */
 }
 
 /* Conteneur pour aligner Titre + Bouton */
@@ -264,6 +253,7 @@ header {
     background: rgba(255,255,255,0.04);
     color: white;
     font-size: 0.95rem;
+    -webkit-tap-highlight-color: transparent;
     outline: none;
 }
 
@@ -848,6 +838,8 @@ h2,h3{
     padding: 0;
     line-height: 1;
     flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .btn-go-up span {
@@ -1204,7 +1196,7 @@ audio {
     <div id="episodes_list"></div>
 </div>
 <a href="https://baleinesousgravillon.com/" target="_blank" id="logo-link">
-    <img id="player-img" class="is-logo" src="https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/cobats.png" alt="Logo">
+    <img id="player-img" class="is-logo" src="https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png" alt="Logo">
 </a>
 <div class="player-container">
 
