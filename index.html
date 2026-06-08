@@ -1168,6 +1168,10 @@ audio {
     stroke-linecap: round;
     transition: stroke-dashoffset 0.12s linear;
 }
+.play-icon {
+    color: var(--primary);
+    font-size: 0.8em;
+}
 
 </style>
 </head>
@@ -1935,7 +1939,7 @@ async function loadEpisodes(pid, encoded = false) {
             episodes.map((e, i) => `
                 <div class="episode-item list-item-ep" id="ep-${i}" onclick="play(${i})">
                     <span class="episode-title">${e.title}</span>
-                    <span style="color:var(--primary); font-size:0.8em;">▶</span>
+                    <span class="play-icon">▶</span>
                 </div>
             `).join('');
 
