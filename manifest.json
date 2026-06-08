@@ -1,6 +1,6 @@
 {
-  "name": "Baleine sous gravillon",
-  "short_name": "BSG",
+  "name": "Combats BSG",
+  "short_name": "Combats",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b0e14",
