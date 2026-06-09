@@ -34,5 +34,1202 @@
     "order": 1,
     "guid": "61d4ad84a9cb331ed7621024fe9170bf72cf3627",
     "image": "https://image.ausha.co/8HCdwwceXuwu8N7CLIEx9UkYOYFFEU7QvtFzw7hn_1400x1400.jpeg?t=1780321775"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Braconnage",
+    "title": "SPÉCIAL Braconnage 4/4: S'infiltrer pour dénoncer (Julie Lasne)",
+    "audio": "https://audio.ausha.co/B4RD6CDPV8ar.mp3?t=1779827545",
+    "order": 4,
+    "guid": "993e536d3b6ed6be9d4b9424408c474f92b40b06",
+    "image": "https://image.ausha.co/9magc7Jai55KHG7HEmEBdfpRVGrW58Iys82CFG5U_1400x1400.jpeg?t=1779827617"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Braconnage",
+    "title": "SPÉCIAL Braconnage 3/4: Canned Hunting, la chasse en enclos (Julie Lasne)",
+    "audio": "https://audio.ausha.co/B1JK3TO9nv6K.mp3?t=1779827441",
+    "order": 3,
+    "guid": "c29975b59217d3dc90d177d9938ce58486fdf9be",
+    "image": "https://image.ausha.co/roHSGqkRkaNfCo9gmJK18vwKDTKOZFVOk66gYCbv_1400x1400.jpeg?t=1779827478"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Braconnage",
+    "title": "SPÉCIAL Braconnage 2/4: Trouver les mots justes (Julie Lasne)",
+    "audio": "https://audio.ausha.co/owKDVFGDN5eP.mp3?t=1779827315",
+    "order": 2,
+    "guid": "12f0578e36bad3f1b1c2a92291bda37bc6e31a1c",
+    "image": "https://image.ausha.co/6vFtdnrxOt3hwG71BB2DNnNYJcpIlhmHcskhXlXO_1400x1400.jpeg?t=1779827348"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Braconnage",
+    "title": "SPÉCIAL Braconnage 1/4: Parcours d'une passionnée (Julie Lasne)",
+    "audio": "https://audio.ausha.co/B6jp6TAXX17v.mp3?t=1779827204",
+    "order": 1,
+    "guid": "42275187de0ebf88170b7026d03d19711e486f94",
+    "image": "https://image.ausha.co/tnF8LIEetEDTWAfPkF96hqXZehH7XRXVxQSr8Ya7_1400x1400.jpeg?t=1779827218"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Fabrique des Pandémies",
+    "title": "SPÉCIAL Fabrique des Pandémies 4/4 : Remettre le Vivant au centre (Marie-Monique Robin)",
+    "audio": "https://audio.ausha.co/yEWzNFAMMWZm.mp3?t=1778748115",
+    "order": 4,
+    "guid": "c8f8a5790a35b47724cff15e9230bb94109adce9",
+    "image": "https://image.ausha.co/kiRREiMVVoJ2KWkAS09vKb3iBnaN3ryzD5qhM8K3_1400x1400.jpeg?t=1778748077"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Fabrique des Pandémies",
+    "title": "SPÉCIAL Fabrique des Pandémies 3/4 : Protéger la biodiversité... nous protège aussi",
+    "audio": "https://audio.ausha.co/b3XAQFPgm2xR.mp3?t=1778748054",
+    "order": 3,
+    "guid": "04f752b5e6237d1368e7f1caa5676e95d52cad52",
+    "image": "https://image.ausha.co/vwA2EV1rMo3OfyyfPAJcChfhVHt6aS4dlBeGfVJ3_1400x1400.jpeg?t=1778748019"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Fabrique des Pandémies",
+    "title": "SPÉCIAL Fabrique des Pandémies 2/4 : L'art de porter la caméra dans la plaie...",
+    "audio": "https://audio.ausha.co/odK1kFjOX477.mp3?t=1778748005",
+    "order": 2,
+    "guid": "8145db31e01efbcad8bd1cbfcd93935c88ef5908",
+    "image": "https://image.ausha.co/P6HxQp6gfnepqraEQNNw5AFH7m3Vr1rYMq3RtPr6_1400x1400.jpeg?t=1778747967"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Fabrique des Pandémies",
+    "title": "SPÉCIAL Fabrique des Pandémies 1/4 : Marie-Monique Robin, un vie d'investigations sur le Vivant",
+    "audio": "https://audio.ausha.co/BnKNJFa78pDn.mp3?t=1778747883",
+    "order": 1,
+    "guid": "b6f3a76e6b237476bd4c8a769de4abeadfd5d71d",
+    "image": "https://image.ausha.co/kyostlTK36k9p8NsawIrX3nIo4roWxB4wdjOX0A1_1400x1400.jpeg?t=1778747811"
+  },
+  {
+    "episodeId": "8",
+    "playlistId": "Les meilleurs docs audio",
+    "title": "S05E87 Les meilleurs docs audio 8/8 : Réinventer l'écoute avec le son immersif (Frédéric Changenet, France Culture)",
+    "audio": "https://audio.ausha.co/odK1kFKMvADA.mp3?t=1778513540",
+    "order": 8,
+    "guid": "18324ac08f8ce3c78cdd0bf5e07c207ef125f0fc",
+    "image": "https://image.ausha.co/P7VhUuKFzoZCy3ngGO0499UwKCk47EXDZmSw2SeS_1400x1400.jpeg?t=1778533640"
+  },
+  {
+    "episodeId": "7",
+    "playlistId": "Les meilleurs docs audio",
+    "title": "S05E86 Les meilleurs docs audio 7/8 : \"Ondes immersives : dialogue animal\" (ENS Louis-Lumière Paris)",
+    "audio": "https://audio.ausha.co/owKDVFLwaaGM.mp3?t=1778533231",
+    "order": 7,
+    "guid": "15efe3f764cf0e69a39734890dd731b622ef4c31",
+    "image": "https://image.ausha.co/UFvpkOIFB0TJdFWRNXGykKxBsBHPnbyy1SzhV4BH_1400x1400.jpeg?t=1778513343"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "HORS-SÉRIE Vulgariser ",
+    "title": "HORS-SÉRIE Vulgariser 3/3 : L'humour et l'humilité (Renaud Pourpre / Exaltia)",
+    "audio": "https://audio.ausha.co/BDQAVCPL3EqQ.mp3?t=1775405701",
+    "order": 3,
+    "guid": "9851fa60d0c04dad033da6b803013ddf19e0e110",
+    "image": "https://image.ausha.co/H1FcNZbdx8nEUbPeDy5bbkC8DGv9Pz1IkowoxoOW_1400x1400.jpeg?t=1775408728"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "HORS-SÉRIE Vulgariser ",
+    "title": "HORS-SÉRIE Vulgariser 2/3 : Que faire de/avec l'IA ? (Renaud Pourpre / Exaltia)",
+    "audio": "https://audio.ausha.co/B6jp6T68NNOE.mp3?t=1775405674",
+    "order": 2,
+    "guid": "5cfbd2f446be1872402707ffcd81d224d0b8e5d0",
+    "image": "https://image.ausha.co/NDEcKUGbsTUEGRBEtOgb3SaTzYZoB3TAhqrDcs3L_1400x1400.jpeg?t=1775408679"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "HORS-SÉRIE Vulgariser ",
+    "title": "HORS-SÉRIE Vulgariser 1/3 : Comment faire sens, simple et sympa ? (Renaud Pourpre / Exaltia)",
+    "audio": "https://audio.ausha.co/bWDp3Fqr9QJ8.mp3?t=1775405649",
+    "order": 1,
+    "guid": "11f6e5752c8010bafbfe5ccf6f2ad18aeadba1f3",
+    "image": "https://image.ausha.co/jUfvULW3AJxO4VushI8yNTBUX9EnF6GI4VGV0gUD_1400x1400.jpeg?t=1775408661"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Sur les chemins du vivant",
+    "title": "SPÉCIAL Sur les chemins du vivant 4/4 : Chasse, pollution lumineuse et... se promener la nuit en forêt",
+    "audio": "https://audio.ausha.co/bzKWDFVA23n0.mp3?t=1777462584",
+    "order": 4,
+    "guid": "c62f12f0a52e4066b1e7ef8b4210201d8760c7ef",
+    "image": "https://image.ausha.co/TbzaOFS7xkkG4zGGoJqlTitvWZknUVww2xzaPNaC_1400x1400.jpeg?t=1777462548"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Sur les chemins du vivant",
+    "title": "SPÉCIAL Sur les chemins du vivant 3/4 : Cormoran, empathie, friches et ... mycorhizes",
+    "audio": "https://audio.ausha.co/b59D8iqz1QOp.mp3?t=1777462529",
+    "order": 3,
+    "guid": "b9089b0cd158a2bcc23ceabfe12fa4dac446ec94",
+    "image": "https://image.ausha.co/0DiI3aczziO9jkXuTDykTDauUkThWUr56TvLbX0F_1400x1400.jpeg?t=1777462479"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Sur les chemins du vivant",
+    "title": "SPÉCIAL Sur les chemins du vivant 2/4 : Busard cendré, Castor et Sterne pierregarin",
+    "audio": "https://audio.ausha.co/bjKNrFG7Xw3B.mp3?t=1777462455",
+    "order": 2,
+    "guid": "f70f19356e69a124451164b99f248e9c6ea712a5",
+    "image": "https://image.ausha.co/zRWlJUmohOXwXlUkOxIwQwAAy9fGnsdOf2cFRFaI_1400x1400.jpeg?t=1777462409"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Sur les chemins du vivant",
+    "title": "SPÉCIAL Sur les chemins du vivant 1/4 : Carnet de route d'un jeune naturaliste (Victor Noël)",
+    "audio": "https://audio.ausha.co/BMXYwFLVYP5R.mp3?t=1777462329",
+    "order": 1,
+    "guid": "ed5c2f2ca3fcba1209e93c830630aa4551b40cdf",
+    "image": "https://image.ausha.co/KJo4DYImcZiaqNgd4YDC0swfVvVCMZXbEnBTUBdT_1400x1400.jpeg?t=1777462283"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "HORS-SÉRIE La révolution des algues",
+    "title": "HORS-SÉRIE La révolution des algues 4/4 : On s'y met quand... et comment ?",
+    "audio": "https://audio.ausha.co/bjKNrFAWj2ZO.mp3?t=1776192742",
+    "order": 4,
+    "guid": "4d54b90fc5ddbe0616aa1f35752b0fe960a876c6",
+    "image": "https://image.ausha.co/7x1u2r1CLppvPZEKNedHn2eQJOV3I9q9bXvmeI4v_1400x1400.jpeg?t=1776246697"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "HORS-SÉRIE La révolution des algues",
+    "title": "HORS-SÉRIE La révolution des algues 3/4 : Le trou noir (et blanc) juridique",
+    "audio": "https://audio.ausha.co/y0MLQcNrKmnl.mp3?t=1776192727",
+    "order": 3,
+    "guid": "a6c8da0cb284002c2bf15ec50ab44bee97dc6988",
+    "image": "https://image.ausha.co/97audhZPcyiZBgIL7WScdx1iCVnR32SKRHn3udab_1400x1400.jpeg?t=1776246670"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "HORS-SÉRIE La révolution des algues",
+    "title": "HORS-SÉRIE La révolution des algues 2/4 : Comment les rendre (plus) sexy ?",
+    "audio": "https://audio.ausha.co/bWDp3FrKMmdr.mp3?t=1776192707",
+    "order": 2,
+    "guid": "d4d23b68783d968c7477abc66048fc2f6e822e7f",
+    "image": "https://image.ausha.co/xI64e52piUAoI6diz6ZXGLaik2nRMbs4gLp8wD17_1400x1400.jpeg?t=1776246724"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "HORS-SÉRIE La révolution des algues",
+    "title": "HORS-SÉRIE La révolution des algues 1/4 : Une ressource ignorée",
+    "audio": "https://audio.ausha.co/bYpYOcjdwj4X.mp3?t=1776192667",
+    "order": 1,
+    "guid": "2402b6550073fb5346548d95952d3620bd86d55b",
+    "image": "https://image.ausha.co/6HLl38JHTXgXm2mTVEoOt8OJPJ2PgQGA44zq7wBL_1400x1400.jpeg?t=1776246579"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 2 : Les Requins",
+    "audio": "https://audio.ausha.co/yOXwlHxxVrna.mp3?t=1751634145",
+    "order": 2,
+    "guid": "a176b34a8443b198ce4715757feb2ad08504f81e",
+    "image": "https://image.ausha.co/KYMFACNHjELlZsftqAm1Xy2YsRnS4hevhQXQig1u_1400x1400.jpeg?t=1676623195"
+  },
+  {
+    "episodeId": "6",
+    "playlistId": "Les meilleurs docs audio ",
+    "title": "S05E85 Les meilleurs docs audio 6/8 : \"Le chant de l'extinction\" (Jeanne-Marie Desnos)",
+    "audio": "https://audio.ausha.co/ykKLEFgl0rEM.mp3?t=1776063071",
+    "order": 6,
+    "guid": "a84c0ac30754fc802f2dbfc12e40a6a4797c6a44",
+    "image": "https://image.ausha.co/zWVzNtnS1qjdT4gxEr37Pt6SnytlgHTHFf0xShli_1400x1400.jpeg?t=1776063084"
+  },
+  {
+    "episodeId": "5",
+    "playlistId": "Les meilleurs docs audio ",
+    "title": "S05E84 Les meilleurs docs audio 5/8 : \"L'Oreille nue\", à l'écoute des sons d'Amazonie (Éloïse Guénard, Rodolphe Alexis)",
+    "audio": "https://audio.ausha.co/BqKgRFP2LkZA.mp3?t=1776062954",
+    "order": 5,
+    "guid": "9006455e0379e71e417160877100d94de3556372",
+    "image": "https://image.ausha.co/WozNUFcsvDWh0npwQHCJeimlQC9jdB8WKiThl1Vu_1400x1400.jpeg?t=1776062993"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Les meilleurs docs audio ",
+    "title": "S05E83 Les meilleurs docs audio 4/8 : Les paysages sonores (Jérôme Sueur)",
+    "audio": "https://audio.ausha.co/omArMirjaAdE.mp3?t=1776006672",
+    "order": 4,
+    "guid": "d76252607a1c388b2cb105b020d037671922a173",
+    "image": "https://image.ausha.co/2Bh9hwGvUrZCuJ1GA6rIsnz6yDkA8xypLNQLlDpb_1400x1400.jpeg?t=1776007462"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "DÉBAT : (s')Informer sans désespérer",
+    "title": "S05E82 DÉBAT : (s')Informer sans désespérer 3/3 (Vincent Doumeizel / Marc Mortelmans)",
+    "audio": "https://audio.ausha.co/BMXYwFEvNWYp.mp3?t=1775210688",
+    "order": 3,
+    "guid": "634eae261eccc9acf05828cfc4bc473b738c3cdc",
+    "image": "https://image.ausha.co/feKUVu02x9Xo7v1vTDVN58lBhNLQFfTTzU8O3f9L_1400x1400.jpeg?t=1775227591"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "DÉBAT : (s')Informer sans désespérer",
+    "title": "S05E81 DÉBAT : (s')Informer sans désespérer 2/3 (Vincent Doumeizel / Marc Mortelmans)",
+    "audio": "https://audio.ausha.co/b22YQFw6K0vx.mp3?t=1775210676",
+    "order": 2,
+    "guid": "8d9c19c937e05fc7e27f2b2ee24d88fdd50e844c",
+    "image": "https://image.ausha.co/Lg2BT0oOAGa31eSO6tfiXYY8qDaBZTy4qjJ8Kee1_1400x1400.jpeg?t=1775227575"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "DÉBAT : (s')Informer sans désespérer",
+    "title": "S05E80 DÉBAT : (s')Informer sans désespérer 1/3 (Vincent Doumeizel / Marc Mortelmans)",
+    "audio": "https://audio.ausha.co/yEWzNFRXmMr5.mp3?t=1775210590",
+    "order": 1,
+    "guid": "e8d9d264fc5b965c7d83f7748194c3bcd19b39a3",
+    "image": "https://image.ausha.co/11WLAkROlZNEcUmsoGzMtpsN1zBnKK9Z4mvHPbqR_1400x1400.jpeg?t=1775227572"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Les meilleurs docs audio",
+    "title": "S05E79 Les meilleurs docs audio 3/8 : Comment les animaux perçoivent le monde ? (Franck Bessière)",
+    "audio": "https://audio.ausha.co/b7nDQcEjwkG9.mp3?t=1775064875",
+    "order": 3,
+    "guid": "3b6d6a9173d77b2cb82dceabf6111d68d14aae73",
+    "image": "https://image.ausha.co/d0DHaZ5gtPvWo58lM1TtpmzK3aNsADFtCY72zysP_1400x1400.jpeg?t=1774967800"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Les meilleurs docs audio",
+    "title": "S05E78 Les meilleurs docs audio 2/8 : La passion des pieuvres (Franck Bessière)",
+    "audio": "https://audio.ausha.co/BDQAVCkl4xVW.mp3?t=1775064828",
+    "order": 2,
+    "guid": "6d690099dcdecd8d05949b9a80262e8997cd8bfa",
+    "image": "https://image.ausha.co/XGlZcyGX8EX4WAMHNKd581bI5uheJuxSeP3eUmqb_1400x1400.jpeg?t=1774966909"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Les meilleurs docs audio",
+    "title": "S05E77 Les meilleurs docs audio 1/8 : \"Retour vers la Préhistoire\" (Franck Bessière, Camille Renard)",
+    "audio": "https://audio.ausha.co/B6jp6TkQ42KN.mp3?t=1775064654",
+    "order": 1,
+    "guid": "a549bb635a7e47383bdaf9079ed786c9e634f04a",
+    "image": "https://image.ausha.co/s5VwBEaahGM3HCDkrFjI2ogtRVOB6sjetxLwYzAn_1400x1400.jpeg?t=1775053052"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 1 : Le Loup",
+    "audio": "https://audio.ausha.co/odw1nc79kzWV.mp3?t=1751634137",
+    "order": 1,
+    "guid": "5f58fb86d1d236a1a7676c2dc383956c83ea08be",
+    "image": "https://image.ausha.co/SUuPVNlvmSLJzIctHRTFE3H5vbkH9zwyttyY4R4k_1400x1400.jpeg?t=1669841021"
+  },
+  {
+    "episodeId": "6",
+    "playlistId": "Les \"nuisibles\"",
+    "title": "S05E76 Les \"nuisibles\" 6/6 : Les alternatives au massacres (Frédéric Jiguet)",
+    "audio": "https://audio.ausha.co/BQnOlcxMPX97.mp3?t=1774174857",
+    "order": 6,
+    "guid": "5428a8b812e0ccbe31edc8a48c0326c8aa3b66e7",
+    "image": "https://image.ausha.co/WSEAB0oVxLo0yAhcbyopAxpjk2zPWVrkaSgRkeuz_1400x1400.jpeg?t=1774172352"
+  },
+  {
+    "episodeId": "5",
+    "playlistId": "Les \"nuisibles\"",
+    "title": "S05E75 Les \"nuisibles\" 5/6 : Belette, fouine, pie, geai, étourneau (Frédéric Jiguet)",
+    "audio": "https://audio.ausha.co/yvwqmumKJmOk.mp3?t=1774125278",
+    "order": 5,
+    "guid": "d7b237affa2d5780ec644efe8f737da5b582b1c6",
+    "image": "https://image.ausha.co/IXpy5SLsa2SxSQ3lQE1kAmNLH5QqE1CXz0cWvIEl_1400x1400.jpeg?t=1774172303"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Les \"nuisibles\"",
+    "title": "S05E74 Les \"nuisibles\" 4/6 : Le cas d'école du renard (Frédéric Jiguet)",
+    "audio": "https://audio.ausha.co/yJMz0cme4772.mp3?t=1774125245",
+    "order": 4,
+    "guid": "12aae51392e8e3b4ef64dd937b5f455b1bf60227",
+    "image": "https://image.ausha.co/C7smyJw608pYyPbO9XJsW9tOag4PlTT90bAuB0RF_1400x1400.jpeg?t=1774172264"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Les \"nuisibles\"",
+    "title": "S05E73 Les \"nuisibles\" 3/6 : Corneille noire et corbeaux freux (Frédéric Jiguet)",
+    "audio": "https://audio.ausha.co/bPjY0TkLGvV5.mp3?t=1774125221",
+    "order": 3,
+    "guid": "ee069d221d9d960a191524b3c862d0af181a7ae6",
+    "image": "https://image.ausha.co/2v8xQgRerFlESmXBA4C0TCGExvrUJB5vvvQs04sz_1400x1400.jpeg?t=1774172234"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Les \"nuisibles\"",
+    "title": "S05E72 Les \"nuisibles\" 2/6 : Le sanglier, un cas à part (Marc Mortelmans)",
+    "audio": "https://audio.ausha.co/B4RD6CDl1vqG.mp3?t=1774125196",
+    "order": 2,
+    "guid": "ceea80a43033f06a9190584298468a60cceb7473",
+    "image": "https://image.ausha.co/Jo3iyYG6RFXIvneWUlRxzQNYdqajlD3EmrAtlcNV_1400x1400.jpeg?t=1774172159"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Les \"nuisibles\"",
+    "title": "S05E71 Les \"nuisibles\" 1/6 : Des massacres coûteux et inutiles (Frédéric Jiguet)",
+    "audio": "https://audio.ausha.co/B4RD6Cj7wx5k.mp3?t=1774176266",
+    "order": 1,
+    "guid": "e11ba129c101578a81f076ee4681edbe520036ca",
+    "image": "https://image.ausha.co/bQVXTc4hHzSn8YKr3dT5VZFcmrgSB3UYy1PXExDG_1400x1400.jpeg?t=1774172204"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Fakear et le monde Vivant ",
+    "title": "S05E70 Fakear et le monde Vivant 4/4 : Totémisé \"Mégathérium insatisfait\"",
+    "audio": "https://audio.ausha.co/blKAvFaZaN7k.mp3?t=1773254970",
+    "order": 4,
+    "guid": "e46819b030292906d24c9deea7afc5b7a6cd87ff",
+    "image": "https://image.ausha.co/QcIXvayfV7fWxKu1YwfbJk5hX9P5PBas5A0bbtXo_1400x1400.jpeg?t=1773255092"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Fakear et le monde Vivant ",
+    "title": "S05E69 Fakear et le monde Vivant 3/4 : Composer avec ses convictions",
+    "audio": "https://audio.ausha.co/B4RD6C996QOO.mp3?t=1773252887",
+    "order": 3,
+    "guid": "fce42fc00f674ebfc75fa763df7242c04237e3c9",
+    "image": "https://image.ausha.co/oSly3FfFcvaXgiMqElsheH2oJkpa7aSRI09dC1qD_1400x1400.jpeg?t=1773253320"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Fakear et le monde Vivant ",
+    "title": "S05E68 Fakear et le monde Vivant 2/4 : Sur un séquoia perché...",
+    "audio": "https://audio.ausha.co/bYpYOcAAeDYq.mp3?t=1773086075",
+    "order": 2,
+    "guid": "b7d603e2c0b34c12bd690bed24f4b8661d8f74cf",
+    "image": "https://image.ausha.co/KVYAtm9cdOtz1scalVydoet7vNXEe6Zn0T4v75AN_1400x1400.jpeg?t=1773086144"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Fakear et le monde Vivant ",
+    "title": "S05E67 Fakear et le monde Vivant 1/4 : Mr Pesto, son \"chat-pote\"",
+    "audio": "https://audio.ausha.co/oRkO0HOrQqNJ.mp3?t=1773084552",
+    "order": 1,
+    "guid": "8f12b17360eeb7cb5ec2792134715d8935a6578c",
+    "image": "https://image.ausha.co/kmcLEgereVdskCYil3yHo7obVCQZzT29oSjXXzyX_1400x1400.jpeg?t=1773086030"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "REGARDS",
+    "title": "REGARDS 4/4 Sous la terre, la grande alliance du vivant (Marc-André Selosse)",
+    "audio": "https://audio.ausha.co/yvwqmume1WKa.mp3?t=1772643543",
+    "order": 4,
+    "guid": "c49dfd99a191a6f033fe600cf514d65ecfadea75",
+    "image": "https://image.ausha.co/JVOLt0qG1WOeR9pqG9T7cJMdKrZQY9UYRSwprZFD_1400x1400.jpeg?t=1772645101"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "REGARDS",
+    "title": "REGARDS 3/4 One Health : \"Préserver le Vivant, c'est nous préserver nous !\" (Gilles Boeuf)",
+    "audio": "https://audio.ausha.co/BDQAVCMlLJQQ.mp3?t=1772642950",
+    "order": 3,
+    "guid": "1cb7cfafe134c5dac14e066ac75b760baa89fb81",
+    "image": "https://image.ausha.co/LLZbaX2dUop8Ay0ypnPZNDGZ2Zyk3iPy9ShH5QUQ_1400x1400.jpeg?t=1772645150"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "REGARDS",
+    "title": "REGARDS 2/4 Retrouver l'harmonie avec le monde vivant (Yann Arthus-Bertrand)",
+    "audio": "https://audio.ausha.co/BMXYwFNn2x9q.mp3?t=1772450522",
+    "order": 2,
+    "guid": "fc1447dbe8323858bf2be21e432e0db2ebfd43dc",
+    "image": "https://image.ausha.co/gezkECJYBUgfqfzBSWym20dQWln90gqksQqk4O55_1400x1400.jpeg?t=1772450663"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "REGARDS",
+    "title": "REGARDS 1/4 Ces bactéries qui font pleuvoir (Emma Haziza)",
+    "audio": "https://audio.ausha.co/yO9wviJqZ2ZW.mp3?t=1772450376",
+    "order": 1,
+    "guid": "99a85bd5f47f5e23802f82554c90d6f3affa782e",
+    "image": "https://image.ausha.co/jzouJbS3EVCIQCxp1hMBz04RDYrg4jNQf07g0q9i_1400x1400.jpeg?t=1772450480"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Le \"Turbopoulet\" ",
+    "title": "S05E66 Le \"Turbopoulet\" 4/4 : Garde espoir mon poulet ! (Axelle Playoust-Braure)",
+    "audio": "https://audio.ausha.co/yeKNmFWkgXwB.mp3?t=1771967156",
+    "order": 4,
+    "guid": "5e6aa31b145860d5dcbfafefab161ab55058bf2d",
+    "image": "https://image.ausha.co/hHkCAdJr4ZzYq4vjSkyziJappjBdzR2QuMmzrNeI_1400x1400.jpeg?t=1772551537"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Le \"Turbopoulet\" ",
+    "title": "S05E65 Le \"Turbopoulet\" 3/4 : L'aile ET la cuisse des lobbies (Axelle Playoust-Braure)",
+    "audio": "https://audio.ausha.co/BNRYPCrL9Lwg.mp3?t=1771962456",
+    "order": 3,
+    "guid": "3695c9771135f1f5b591d84150025b4ec9776528",
+    "image": "https://image.ausha.co/vuhpP1iqJdbzBapdFeoxxzm4jibO7EpRbKHJc7Ni_1400x1400.jpeg?t=1772551530"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Le \"Turbopoulet\" ",
+    "title": "S05E64 Le \"Turbopoulet\" 2/4 : Adulte en... 35 jours (Axelle Playoust-Braure)",
+    "audio": "https://audio.ausha.co/BG8zDcj1AA6z.mp3?t=1771962415",
+    "order": 2,
+    "guid": "75eb066b1b9e3d93e58cec74e9a6c0ab9e7427a5",
+    "image": "https://image.ausha.co/RetVfToHsyaPVhZJlk7QCcdB9mD4KDUkC1eaxZ3j_1400x1400.jpeg?t=1772551523"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Le \"Turbopoulet\" ",
+    "title": "S05E63 Le \"Turbopoulet\" 1/4 : Un succès mondial... récent (Axelle Playoust-Braure)",
+    "audio": "https://audio.ausha.co/B6jp6TlrlW29.mp3?t=1771962402",
+    "order": 1,
+    "guid": "c8f3c3718845ab0a6dbc5d7a958cdaad12a49f27",
+    "image": "https://image.ausha.co/hjTDfEdewvDqMQA7b0nSzIXP5c1V8dWuiB4saAOI_1400x1400.jpeg?t=1772551517"
+  },
+  {
+    "episodeId": "8",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 8 : Les pionniers de l'évolution",
+    "audio": "https://audio.ausha.co/yEVzLfAL5KM0.mp3?t=1751634190",
+    "order": 8,
+    "guid": "b30380bd02c908507c465d6a8e5d0bcd1a0d6278",
+    "image": "https://image.ausha.co/yEulzJUTiwiXcRPXvIIUzeJXaLfsl92azXoh315h_1400x1400.jpeg?t=1751633537"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "S'adapter",
+    "title": "S05E62 S'adapter 3/3 : Trop sec (Ilian Moundib)",
+    "audio": "https://audio.ausha.co/yJMz0c381gwz.mp3?t=1771681789",
+    "order": 3,
+    "guid": "50ed579ef1caab4e5a3afa43331feb3cee51a114",
+    "image": "https://image.ausha.co/ZJ74UgnTc36aFHUgwjNNvZEaWDHX8LCibGif4jHw_1400x1400.jpeg?t=1771681782"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "S'adapter",
+    "title": "S05E61 S'adapter 2/3 : Trop chaud (Ilian Moundib)",
+    "audio": "https://audio.ausha.co/bzKWDFRV52aD.mp3?t=1771681745",
+    "order": 2,
+    "guid": "3a7fba7f97178dc7e59f0e71dad34e556288cfcc",
+    "image": "https://image.ausha.co/a0rV59j5wjyAssTlsmXhT8mnTgXZBOmkjlYjYUhf_1400x1400.jpeg?t=1771681737"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "S'adapter",
+    "title": "S05E60 S'adapter 1/3 : Trop d'eau (Ilian Moundib)",
+    "audio": "https://audio.ausha.co/yJMz0cwkR3On.mp3?t=1771681653",
+    "order": 1,
+    "guid": "b454ea343cf245461afad1da0eaef3c4997beb52",
+    "image": "https://image.ausha.co/11XLBA8aPXiOetGdWhPYkfScANRcD4b76snrZTcq_1400x1400.jpeg?t=1771681697"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Darwin",
+    "title": "SPÉCIAL Darwin : Le même voyage que lui ... 2 siècles plus tard 4/4",
+    "audio": "https://audio.ausha.co/oRkO0HXKaKdN.mp3?t=1770835633",
+    "order": 4,
+    "guid": "4119904d45f03e738428febcf2f50c698c2ddd51",
+    "image": "https://image.ausha.co/eaEuznGWUhbQrShaJv1MIp1bQRsHzFFGs1OsmAye_1400x1400.jpeg?t=1770833820"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Darwin",
+    "title": "SPÉCIAL Darwin : Le même voyage que lui ... 2 siècles plus tard 3/4",
+    "audio": "https://audio.ausha.co/b59D8imY4Kja.mp3?t=1770835570",
+    "order": 3,
+    "guid": "b830c58925196e73a0ec2517ae26ffbe426a20a9",
+    "image": "https://image.ausha.co/24wSedPNGMo5gkCiwgi6qMNHi9517RwAnjp6rj3v_1400x1400.jpeg?t=1770833811"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Darwin",
+    "title": "SPÉCIAL Darwin : Le même voyage que lui ... 2 siècles plus tard 2/4",
+    "audio": "https://audio.ausha.co/BNRYPCrY78Xq.mp3?t=1770835585",
+    "order": 2,
+    "guid": "f62431500a9c701215820a51547310677a91b5af",
+    "image": "https://image.ausha.co/on5fmpfQLBDlAr6rwxAdB0PuroHa28QtWvVfv2qJ_1400x1400.jpeg?t=1770833801"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Darwin",
+    "title": "SPÉCIAL Darwin : Le même voyage que lui ... 2 siècles plus tard 1/4",
+    "audio": "https://audio.ausha.co/b7nDQc6Ad757.mp3?t=1770835564",
+    "order": 1,
+    "guid": "af287c5f0f3b1c783b9996302e912da308719581",
+    "image": "https://image.ausha.co/2jAXoEYkqE9eo3c2EvyL7CzwGpOmSihz7iIITqCI_1400x1400.jpeg?t=1770833789"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Cétacés captifs en France ",
+    "title": "S05E59 Cétacés captifs en France 4/4 : Où et comment les \"héberger\" ?",
+    "audio": "https://audio.ausha.co/y8kKEHpWmQDN.mp3?t=1769883949",
+    "order": 4,
+    "guid": "4501f3c77edf737110f4de72c2464912cbc81dcc",
+    "image": "https://image.ausha.co/l34xgxoJ9D12QHXHT9VWFw2m62MkG6L3uQ9QbIXD_1400x1400.jpeg?t=1770311108"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Cétacés captifs en France ",
+    "title": "S05E58 Cétacés captifs en France 3/4 : Les \"attaques\" des cousines de Gibraltar...",
+    "audio": "https://audio.ausha.co/b3XAQFaPnVE4.mp3?t=1769883902",
+    "order": 3,
+    "guid": "067fc1d5280267417a8e7c9814adb7f872fe3e20",
+    "image": "https://image.ausha.co/s8R9hXz10LP5kqzDxhD2WAE73NFmR4hxmKc0QgYG_1400x1400.jpeg?t=1770326893"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Cétacés captifs en France ",
+    "title": "S05E57 Cétacés captifs en France 2/4 : \"Sanctuaire\" ou autre parc ?",
+    "audio": "https://audio.ausha.co/yJMz0ck5Gl1V.mp3?t=1769883869",
+    "order": 2,
+    "guid": "7c67873153f869f15e2c0415e986bc24d6fe6793",
+    "image": "https://image.ausha.co/9jIg1CKVZ2mvXg4v9friGIWIml60llMvLhoPghxw_1400x1400.jpeg?t=1770311093"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Cétacés captifs en France ",
+    "title": "S05E56 Cétacés captifs en France 1/4 : Que faire des derniers ?",
+    "audio": "https://audio.ausha.co/BNRYPCrzMLN4.mp3?t=1769883802",
+    "order": 1,
+    "guid": "a6c71742f303ecc44bc26af12c93d07e31b9671f",
+    "image": "https://image.ausha.co/DM5mYalQuKFay43wFNRyLCH8Kc2RmI0HkbuLoKVR_1400x1400.jpeg?t=1770311084"
+  },
+  {
+    "episodeId": "7",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 7/7 : Un plongeur sachant plonger doit savoir... (Longitudes 181)",
+    "audio": "https://audio.ausha.co/BQnOlcqOKzPJ.mp3?t=1768993269",
+    "order": 7,
+    "guid": "5dcae4227d66140fae135771d760a281b029fbf1",
+    "image": "https://image.ausha.co/5OiZnWvD5pE9cd92gmBQUeRyFnZ3AV7GQhdieGtQ_1400x1400.jpeg?t=1768993637"
+  },
+  {
+    "episodeId": "6",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 6/7 : Recycler sa combi, un geste eco-friendly (Captain' Néo)",
+    "audio": "https://audio.ausha.co/B6jp6TG2kwR7.mp3?t=1768992827",
+    "order": 6,
+    "guid": "cc3846b5276fb15e89b2919fe739335f47f6e6fd",
+    "image": "https://image.ausha.co/cSK113WpZ3eVOuRvKlpJIF5n3OJgRoU5Kmghr15a_1400x1400.jpeg?t=1768993146"
+  },
+  {
+    "episodeId": "5",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 5/7 : De mystérieuses grottes immergées (Nathalie Lasselin)",
+    "audio": "https://audio.ausha.co/BnKNJFannkJO.mp3?t=1768992167",
+    "order": 5,
+    "guid": "7644816f341a2137bf4318fb2389912f28b78638",
+    "image": "https://image.ausha.co/Rnl6zy0A6CaNOFfPQNxB8ShzO6itvMxsWwJq1MhP_1400x1400.jpeg?t=1768992752"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 4/7 : Rencontre avec le Grand Requin Marteau (Laurent Ballesta)",
+    "audio": "https://audio.ausha.co/oL2PaFvWNVLJ.mp3?t=1768991802",
+    "order": 4,
+    "guid": "205bf11396886cd53451ef122aa9b6e636ddec85",
+    "image": "https://image.ausha.co/7MZELFE5e7GwuiF9z9I0vTQoR6beSbfsjuRqjrsa_1400x1400.jpeg?t=1768992073"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 3/7 : Qu'est ce que la \"bioplongée\" ? (Ocean Academy)",
+    "audio": "https://audio.ausha.co/bYpYOcjAxZN0.mp3?t=1768991475",
+    "order": 3,
+    "guid": "308dc4cb11bf79c32c2d7aed35cf55e419f2981a",
+    "image": "https://image.ausha.co/zQr3nfUQyZd5GhZujKma38yy4FPxsN37A95OMq7D_1400x1400.jpeg?t=1768991731"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 2/7 : Dauphins/humains, des relations souvent fantasmées",
+    "audio": "https://audio.ausha.co/yJMz0cg1X0Y3.mp3?t=1768990679",
+    "order": 2,
+    "guid": "d3cd748906c5f18964e84c9bb691f6f134af4bc6",
+    "image": "https://image.ausha.co/Sdqt42NzsdT6rZU3crMQtwaSJABIfXMiTXSTpUyi_1400x1400.jpeg?t=1768991201"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL PLONGÉE ",
+    "title": "SPÉCIAL PLONGÉE 1/7 : Entretien avec un requin (Steven Surina)",
+    "audio": "https://audio.ausha.co/BqYgQc4N2Lwg.mp3?t=1769413046",
+    "order": 1,
+    "guid": "6fe61e40e7eb71cc087ee52f2bc107af98cb508e",
+    "image": "https://image.ausha.co/Jyf28Bi6hXt8hq3uWreqzlHaXJDC7MdC6Rw4VT92_1400x1400.jpeg?t=1769411336"
+  },
+  {
+    "episodeId": "7",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 7 : La vie aux extrêmes",
+    "audio": "https://audio.ausha.co/BMXYwFKEe4wA.mp3?t=1751634186",
+    "order": 7,
+    "guid": "2fa8cf4df19de62d8d54f62e6347ade7ec764685",
+    "image": "https://image.ausha.co/MWOn8EbLXpwIHCTvUPh4jhJ52KaVzagYVvSCgJOz_1400x1400.jpeg?t=1751635208"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Dermatose bovine",
+    "title": "S05E55 Dermatose bovine 4/4 : Ces prochaines crises / maladies... dont personne ne parle (Julien Herla)",
+    "audio": "https://audio.ausha.co/oKJa0TRlpGJG.mp3?t=1768676990",
+    "order": 4,
+    "guid": "ef43631cc69d89b90a452d3b87f44d14b45e0370",
+    "image": "https://image.ausha.co/YYEfI8H9MBSSJxWTyv4YmOkvEaGo5OUFYb4oqsLO_1400x1400.jpeg?t=1768681074"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Dermatose bovine",
+    "title": "S05E54 Dermatose bovine 3/4 : Agris, vétos et gendarmes... la réunion des métiers les plus suicidogènes (Julien Herla)",
+    "audio": "https://audio.ausha.co/b59D8iawxXR1.mp3?t=1768676959",
+    "order": 3,
+    "guid": "8b57bd4d573001d300363afe40bce5e955a7fff4",
+    "image": "https://image.ausha.co/l8aEUJVQEUTP9IXyoSq0avXgy9P94ZHvwJTKifI9_1400x1400.jpeg?t=1768681068"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Dermatose bovine",
+    "title": "S05E53 Dermatose bovine 2/4 : Comparer avec d'autres pays, judicieux ou bof ? (Julien Herla)",
+    "audio": "https://audio.ausha.co/b22YQFzV592b.mp3?t=1768676934",
+    "order": 2,
+    "guid": "be57eeaad26a995a5106fa621c3fd06b41d4c524",
+    "image": "https://image.ausha.co/atUrELTSPyUxpQq6DtkcLHFxqV4mVbsqRJTeHcI5_1400x1400.jpeg?t=1768681062"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Dermatose bovine",
+    "title": "S05E52 Dermatose bovine 1/4 : Les leçons - oubliées - des crises précédentes ? (Julien Herla)",
+    "audio": "https://audio.ausha.co/b22YQFL4LZON.mp3?t=1768859263",
+    "order": 1,
+    "guid": "7fb495bc8620e84b0815547f366c7d85fc4e4e9b",
+    "image": "https://image.ausha.co/UIi7vJQCxZV0Xw2P73TnEIGSQBhAt9ek8Y7tt02m_1400x1400.jpeg?t=1768688893"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Trafic de civelles (anguilles)",
+    "title": "S05E51 : Trafic de civelles (anguilles) 2/2 : Un procès historique ?",
+    "audio": "https://audio.ausha.co/bWDp3FkOnN7M.mp3?t=1768429815",
+    "order": 2,
+    "guid": "db30ff46c3ba48074da672a0900faf83b14e96cd",
+    "image": "https://image.ausha.co/VV9I8ndPkyc2hQuKiCQwGbBCk8gRvjjFNCeoZdkl_1400x1400.jpeg?t=1768431817"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Trafic de civelles (anguilles)",
+    "title": "S05E50 : Trafic de civelles (anguilles) 1/2 : \"l'or blanc\" à 4000 euros le kilo...",
+    "audio": "https://audio.ausha.co/BNRYPCzYWKn2.mp3?t=1768429780",
+    "order": 1,
+    "guid": "9e4880704f73cea45e8b9998ccebf3ff98ce6d03",
+    "image": "https://image.ausha.co/q4LQG9yXJBeDrR3CAmYq4I6dJQ9Cciz7gOfhamIF_1400x1400.jpeg?t=1769095875"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "DNC : Pas d'accord pour abattre des troupeaux entiers !",
+    "title": "S05E49 DNC : Pas d'accord pour abattre des troupeaux entiers ! (Christophe Gatineau)",
+    "audio": "https://audio.ausha.co/b22YQFDa2968.mp3?t=1768319798",
+    "order": 1,
+    "guid": "89037281ce31b9b94b596ba3a696b3134aac15a0",
+    "image": "https://image.ausha.co/FUt8T0W9hLWLUk448tOIwtWy6aMWyRoIdBcHsgGj_1400x1400.jpeg?t=1768245696"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Le VIVANT qui se défend ",
+    "title": "S05E48 Le VIVANT qui se défend 3/3 : Et demain ? (Vincent Verzat)",
+    "audio": "https://audio.ausha.co/B1JK3TXzQdED.mp3?t=1767644906",
+    "order": 3,
+    "guid": "47edb41b3589313cfaec9e9b1b3d8981374059eb",
+    "image": "https://image.ausha.co/7GMQY1L6Y6HyhifBXae4aN9Db9TRTCvV74b06KWC_1400x1400.jpeg?t=1767645957"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Le VIVANT qui se défend ",
+    "title": "S05E47 Le VIVANT qui se défend 2/3 : Autocritiques (Vincent Verzat)",
+    "audio": "https://audio.ausha.co/b7nDQcENagKg.mp3?t=1767687462",
+    "order": 2,
+    "guid": "746c0085d6ba44399213ad9400b3c95590b0b809",
+    "image": "https://image.ausha.co/qjiPpbEAi1O8hLnsQSYvqItBdRuwSpm7HPsSF6Iw_1400x1400.jpeg?t=1767645826"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Le VIVANT qui se défend ",
+    "title": "S05E46 Le VIVANT qui se défend 1/3 : Entre 2 moods, entre 2 mondes (Vincent Verzat)",
+    "audio": "https://audio.ausha.co/BNRYPCzrrmL6.mp3?t=1767644852",
+    "order": 1,
+    "guid": "160b29250a8b4895d42d5309018a96b67476a756",
+    "image": "https://image.ausha.co/aHdFyERMa8B9O6i4vown7C3kqgT0qK7hp1NRypEI_1400x1400.jpeg?t=1767645718"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Arbres en péril",
+    "title": "SPÉCIAL Arbres en péril 4/4 : Nos parcs et jardins... des sanctuaires !",
+    "audio": "https://audio.ausha.co/BnKNJFqxmY1M.mp3?t=1748883649",
+    "order": 4,
+    "guid": "394dc8470f5d912c220ae7c7834b16577640c7bd",
+    "image": "https://image.ausha.co/1ANnpCjBYfpSevORjvYXUOCMur2mzh2RQP21TcS4_1400x1400.jpeg?t=1748883672"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Arbres en péril",
+    "title": "SPÉCIAL Arbres en péril 3/4 : Séquoias, Cèdres, Magnolias, Marronniers...",
+    "audio": "https://audio.ausha.co/ykKLEFEVVnZR.mp3?t=1748883526",
+    "order": 3,
+    "guid": "494c27359e64f4cfa65f43da0cfe8384581bbd2a",
+    "image": "https://image.ausha.co/HJnti3oscgGxlg4i56wmv1v5wbqYl4vCYL4Mpx8H_1400x1400.jpeg?t=1748883582"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Arbres en péril",
+    "title": "SPÉCIAL Arbres en péril 2/4 : Les stars de nos parcs et jardins rares dans leur milieu d'origine",
+    "audio": "https://audio.ausha.co/yAxznTpkn27v.mp3?t=1748883455",
+    "order": 2,
+    "guid": "9ecc145a5e8b0d2497f78bd37cc7066bb05b0f91",
+    "image": "https://image.ausha.co/afOtUsJZzoxtARI353O80cUvQwCNunq8Li731AZn_1400x1400.jpeg?t=1748883481"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Arbres en péril",
+    "title": "SPÉCIAL Arbres en péril 1/4 : 4 espèces d’arbres sur 10 sont menacées",
+    "audio": "https://audio.ausha.co/B4RD6CjOX1jV.mp3?t=1748883091",
+    "order": 1,
+    "guid": "b42390780c338440b202022b9cda8ffce957532d",
+    "image": "https://image.ausha.co/XRXQ2S47q9zPJbr00hGqR0t2eYKArct01qodgWAp_1400x1400.jpeg?t=1748883326"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Quels sont les pires fléaux du monde en 20",
+    "title": "S05E45 Quels sont les pires fléaux du monde en 2025 ?",
+    "audio": "https://audio.ausha.co/yEWzNFR4aYpx.mp3?t=1762361092",
+    "order": 1,
+    "guid": "a472d4bdd661e51e793df05f39702df755258931",
+    "image": "https://image.ausha.co/Yf0RIheMUBWAwracq1X0SGbhCm1D1W8IPlXoOiLf_1400x1400.jpeg?t=1762361679"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "S05E44 Dermatose bovine",
+    "title": "S05E44 Dermatose bovine 3/3 : Foutaise (Action ou vérité ?)",
+    "audio": "https://audio.ausha.co/oKJa0TR699DM.mp3?t=1766424218",
+    "order": 3,
+    "guid": "93c90228a59e53cb24fb38fe938b56c224a3932a",
+    "image": "https://image.ausha.co/MzKSKEQE2pw9anaB59Cu9iKD34NN5zsmh8IV7fTj_1400x1400.jpeg?t=1766432943"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "S05E44 Dermatose bovine",
+    "title": "S05E43 Dermatose bovine 2/3 : Antithèse (vacciner ou pas ?)",
+    "audio": "https://audio.ausha.co/omArMi55GWjx.mp3?t=1766424187",
+    "order": 2,
+    "guid": "a274dce05a52b760b6b7ba813fef976fef528a7b",
+    "image": "https://image.ausha.co/xE2mVmLVRDRg8Wl2ojicrBNxaFqpVPVTuJ16tmW4_1400x1400.jpeg?t=1766432906"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "S05E44 Dermatose bovine",
+    "title": "S05E42 Dermatose bovine 1/3 : Thèse (abattage ou confinement ?)",
+    "audio": "https://audio.ausha.co/yXr10iNgZm85.mp3?t=1766424146",
+    "order": 1,
+    "guid": "382bd05cfcbeeb563c11a1f85449f06922400698",
+    "image": "https://image.ausha.co/wPOsaACFRsl1woiPUyWNBRlg6FzBivG8Bz4wlgD7_1400x1400.jpeg?t=1766432826"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Première : Un rapport de l'Académie des vétos sur la \"gestion\" de la faune sauvage",
+    "title": "S05E41 Première : Un rapport de l'Académie des vétos sur la \"gestion\" de la faune sauvage",
+    "audio": "https://audio.ausha.co/yEWzNFL4w7LM.mp3?t=1764099782",
+    "order": 1,
+    "guid": "ce1553650a9ce7141424a1590a746f031cf8dc68",
+    "image": "https://image.ausha.co/RtfSD70gwXSmbDTWFWDbtKb1pWACWA7NpUyPZOdR_1400x1400.jpeg?t=1764101615"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Fabrice Bonnifet ",
+    "title": "S05E40 Fabrice Bonnifet 4/4 : Dans les œufs au bacon, la poule s'engage mais le cochon s'implique",
+    "audio": "https://audio.ausha.co/B4RD6Cj7zqkk.mp3?t=1764863848",
+    "order": 4,
+    "guid": "b53db332b2bd98026712c102c43ab0f168c9e41f",
+    "image": "https://image.ausha.co/VUE2sQWMOKPypQigAFghEEvqvEwLIPBScjfQxfpE_1400x1400.jpeg?t=1764883043"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Fabrice Bonnifet ",
+    "title": "S05E39 Fabrice Bonnifet 3/4 : Cesser de posséder, le flux plutôt que le stock",
+    "audio": "https://audio.ausha.co/blKAvF8k15ZP.mp3?t=1764863831",
+    "order": 3,
+    "guid": "9b160d493dfd775697bc8686fefbed2bff6cae5a",
+    "image": "https://image.ausha.co/ndkTQ3N4wjRY0CBwh3hMInzdAZXg4VowVNR5UJ0O_1400x1400.jpeg?t=1764882967"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Fabrice Bonnifet ",
+    "title": "S05E38 Fabrice Bonnifet 2/4 : Le théorème du singe (ou le poids écrasant de l'habituel)",
+    "audio": "https://audio.ausha.co/ykKLEFVM3NMq.mp3?t=1764863808",
+    "order": 2,
+    "guid": "fb7cd1e1dace16d503b6543b31c7dc1b9e6480e6",
+    "image": "https://image.ausha.co/8HsgjqCkDR7j66fwLpturgkFn0y5TmxCxqu9f0su_1400x1400.jpeg?t=1764882906"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Fabrice Bonnifet ",
+    "title": "S05E37 Fabrice Bonnifet 1/4 : La loi de Brandolini (ou d'assymétrie des baratins)",
+    "audio": "https://audio.ausha.co/yO9wvi9gq0zN.mp3?t=1764933889",
+    "order": 1,
+    "guid": "ad7ae98232718bb1cb1620ba8dcf1620cbe78cce",
+    "image": "https://image.ausha.co/g9gLTrs5CI0nkpGFiKz35ezTrJpNsl1aNkDdZbUm_1400x1400.jpeg?t=1764882870"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Arrêt des néonicotinoïdes : + 3% d'oiseaux !",
+    "title": "S05E36 Arrêt des néonicotinoïdes : + 3% d'oiseaux !",
+    "audio": "https://audio.ausha.co/b22YQF5Mkna2.mp3?t=1764099421",
+    "order": 1,
+    "guid": "b34f66121229d84bd07228e6cc8c39eaa0abde7b",
+    "image": "https://image.ausha.co/p3sj1CzFIax8czxBzztkzN0b9pmRMw0pWTg1V5wK_1400x1400.jpeg?t=1764101229"
+  },
+  {
+    "episodeId": "6",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 6 : Les constructions ingénieuses",
+    "audio": "https://audio.ausha.co/y0PL6uNx8k69.mp3?t=1751634180",
+    "order": 6,
+    "guid": "11190c962fa4ff88762da4e302eb04785bc90ac4",
+    "image": "https://image.ausha.co/XFrvX2dY48MYOEvhtkDzvZhIYhTOO2Mz5O9VaIMO_1400x1400.jpeg?t=1751633526"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Sangliers : pourquoi la prolifération, comment la stopper ?",
+    "title": "S05E35 Sangliers : pourquoi la prolifération, comment la stopper ?",
+    "audio": "https://audio.ausha.co/bjKNrFQkEaj7.mp3?t=1764099007",
+    "order": 1,
+    "guid": "afbfe0d0eea85744de2fa807f53586bf13e77f7f",
+    "image": "https://image.ausha.co/eeJFNIVYJbN01zXYz0wGmKWWWSqKm5L0qnbg4MVh_1400x1400.jpeg?t=1764101263"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Rosalind Franklin : quand des hommes volent le Nobel d'une femme...",
+    "title": "S05E34 Rosalind Franklin : quand des hommes volent le Nobel d'une femme...",
+    "audio": "https://audio.ausha.co/yAxznTAeEz1o.mp3?t=1764025660",
+    "order": 1,
+    "guid": "6abd078d433fa9964bd7ebfaca7695f64c21b7d0",
+    "image": "https://image.ausha.co/DPaZhYFr8UUUrvO8466CxeifRkN04dMEGjO9XGmR_1400x1400.jpeg?t=1764026749"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Les dessous du retour des pandas du zoo de Beauval en Chine",
+    "title": "S05E33 Les dessous du retour des pandas du zoo de Beauval en Chine",
+    "audio": "https://audio.ausha.co/ykKLEFVlN3Zp.mp3?t=1764023748",
+    "order": 1,
+    "guid": "b4b88b892ce8f6d92d53d9f2e74860dbcd892199",
+    "image": "https://image.ausha.co/pI6lMRUibwLpI8viwXlSsnvW6X67wLLQqEsOBAC5_1400x1400.jpeg?t=1764024578"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Ce que le climat va faire à l'Europe",
+    "title": "S05E32 2049 : Ce que le climat va faire à l'Europe 4/4, les solutions (Nathanaël Wallenhorst)",
+    "audio": "https://audio.ausha.co/brKd9F9dDnK8.mp3?t=1763230019",
+    "order": 4,
+    "guid": "538139bc4a73c686226770c26d76b392cf1dfc0a",
+    "image": "https://image.ausha.co/eNHkdYcwVY80hXUaWSyIfaYOpeivPrnu495OwWaU_1400x1400.jpeg?t=1763230018"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Ce que le climat va faire à l'Europe",
+    "title": "S05E31 2049 : Ce que le climat va faire à l'Europe 3/4, les points de bascule (Nathanaël Wallenhorst)",
+    "audio": "https://audio.ausha.co/bzKWDFJgn33B.mp3?t=1763229976",
+    "order": 3,
+    "guid": "2073aa0e49a01e3708412fdda822f9d22ce166c7",
+    "image": "https://image.ausha.co/2WyCJageoj2tOD9e0jY9NoUYPq0gXzayTxSZNtpn_1400x1400.jpeg?t=1763229966"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Ce que le climat va faire à l'Europe",
+    "title": "S05E30 2049 : Ce que le climat va faire à l'Europe 2/4, océan... danger ! (Nathanaël Wallenhorst)",
+    "audio": "https://audio.ausha.co/b7nDQc8Jg7RK.mp3?t=1763229944",
+    "order": 2,
+    "guid": "0d66c47cd8ad69961b68c742219257e80b40de84",
+    "image": "https://image.ausha.co/Jt3uRJQZbXRasgKIzaTZiVlUV84MfPwQzpvLjHbG_1400x1400.jpeg?t=1763229932"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Ce que le climat va faire à l'Europe",
+    "title": "S05E29 2049 : Ce que le climat va faire à l'Europe 1/4, Anthropocène ou toujours pas ? (Nathanaël Wallenhorst)",
+    "audio": "https://audio.ausha.co/bV160cGGGRkp.mp3?t=1763229826",
+    "order": 1,
+    "guid": "254e5c4481b4cba3abb4f065acb100b03fba2236",
+    "image": "https://image.ausha.co/nSUiHDnULHDNgHAluJ7LdYls1Wtgv0nGvxV8wSKF_1400x1400.jpeg?t=1763229900"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Les attaques d'ours en augmentation dans le monde",
+    "title": "S05E28 Les attaques d'ours en augmentation dans le monde",
+    "audio": "https://audio.ausha.co/oL2PaFZm5vVY.mp3?t=1763115134",
+    "order": 1,
+    "guid": "41798fcf1409e583ff52ffac6de85c58d8870c2c",
+    "image": "https://image.ausha.co/Gl3RjndzikLA3VGXt8lcw4Kf5j2UvCEmKLegneO6_1400x1400.jpeg?t=1763110712"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Des colons israéliens brûlent et arrachent les oliviers des Palestiniens",
+    "title": "S05E27 Des colons israéliens brûlent et arrachent les oliviers des Palestiniens",
+    "audio": "https://audio.ausha.co/ykKLEF4rX4NX.mp3?t=1762360747",
+    "order": 1,
+    "guid": "882dd50295f83acb317fc99955e2b069ae7c1d64",
+    "image": "https://image.ausha.co/kCqUtdD9yPqAt7pOjs7LpdNMVZbA2R6SDKuvOQyN_1400x1400.jpeg?t=1762361026"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Les premiers moustiques en Islande : le début d'une invasion ?",
+    "title": "S05E26 Les premiers moustiques en Islande : le début d'une invasion ?",
+    "audio": "https://audio.ausha.co/b59D8ipxGDpr.mp3?t=1762360340",
+    "order": 1,
+    "guid": "8914dda0ba74b2b5fdabd3835de2bf673d0921b3",
+    "image": "https://image.ausha.co/0lppijoz0o3VDf7BWOVgNVS9MZFpWMbyk0zXtEbc_1400x1400.jpeg?t=1762360710"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": " Une propriétaire de chat condamnée pour les dégâts de son minou... chez son voisin",
+    "title": "S05E25 Une propriétaire de chat condamnée pour les dégâts de son minou... chez son voisin",
+    "audio": "https://audio.ausha.co/owKDVFGKeLVl.mp3?t=1762360078",
+    "order": 1,
+    "guid": "a213e86b3a0dc1d6ccf80ca29c5d19b87a692ce7",
+    "image": "https://image.ausha.co/f5zlW3Lc5AFtkb3OHa27dFMJ0E9BMsooS6z5Srzq_1400x1400.jpeg?t=1762360291"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "L'étrange histoire du chameau de guerre russe en Ukraine",
+    "title": "S05E24 L'étrange histoire du chameau de guerre russe en Ukraine",
+    "audio": "https://audio.ausha.co/B1JK3Tl41wVx.mp3?t=1762275991",
+    "order": 1,
+    "guid": "792946484fc0acd98b3078cc952be02a8eb07183",
+    "image": "https://image.ausha.co/ITOYXaxkaaN46RySFruU1RLOUNAgo3MoU6gQDnsy_1400x1400.jpeg?t=1762277869"
+  },
+  {
+    "episodeId": "5",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 5 : Les domestications",
+    "audio": "https://audio.ausha.co/yvzq7HYPn8Pj.mp3?t=1751634169",
+    "order": 5,
+    "guid": "e324045502753ac4e747c2ea554bb07e31064eee",
+    "image": "https://image.ausha.co/HZFe51xKPUkih5buhAuWsPckNpAH8pGhnhToNRzg_1400x1400.jpeg?t=1751634965"
+  },
+  {
+    "episodeId": "5",
+    "playlistId": "Biomimétisme et bioinspiration",
+    "title": "S05E23 Biomimétisme et bioinspiration 5/5 : Devenir des poulpes (Alain Renaudin)",
+    "audio": "https://audio.ausha.co/B6jp6TGOel3Y.mp3?t=1758796646",
+    "order": 5,
+    "guid": "3d2b05f12efe13699b738cd03238fc5a29f8fc16",
+    "image": "https://image.ausha.co/xVHh19zjtDDswWqd5WcdOSClCNmQ70kaqxJPEklA_1400x1400.jpeg?t=1759062323"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Biomimétisme et bioinspiration",
+    "title": "S05E22 Biomimétisme et bioinspiration 4/5 : Le danger du transhumanisme (Alain Renaudin)",
+    "audio": "https://audio.ausha.co/ykKLEFRmQWPX.mp3?t=1758796568",
+    "order": 4,
+    "guid": "4c2e75386a72f9359f3a486eb5f8a4785d79d7a1",
+    "image": "https://image.ausha.co/5gKKNSDaof7CksZoJoOEuLygeZNWuO1dnr9keZtb_1400x1400.jpeg?t=1759062274"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Biomimétisme et bioinspiration",
+    "title": "S05E21 Biomimétisme et bioinspiration 3/5 : Le hold-up des fleurs (Alain Renaudin)",
+    "audio": "https://audio.ausha.co/owKDVF46W9YQ.mp3?t=1758796449",
+    "order": 3,
+    "guid": "626be4700a825a610c5fdee6054457991844e368",
+    "image": "https://image.ausha.co/EQFfZMoxzydkTruKuHMTF4JkRUsvHC9JSGkDAWg7_1400x1400.jpeg?t=1759062232"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Biomimétisme et bioinspiration",
+    "title": "S05E20 Biomimétisme et bioinspiration 2/5 : Le cas de l'avion (Alain Renaudin)",
+    "audio": "https://audio.ausha.co/BqKgRFqKNwNp.mp3?t=1758796345",
+    "order": 2,
+    "guid": "8110fba9837209ba09daf8a82a0e6508c182ae96",
+    "image": "https://image.ausha.co/ox7MZEWsd7YsYX2N5sM5PfSkwEXM0YjQUsgpH47B_1400x1400.jpeg?t=1759062183"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Biomimétisme et bioinspiration",
+    "title": "S05E19 Biomimétisme et bioinspiration 1/5 : Éviter le greenwashing (Alain Renaudin)",
+    "audio": "https://audio.ausha.co/oa8v9cQXQk98.mp3?t=1758796179",
+    "order": 1,
+    "guid": "06537837b6d6035be8a567d34f8b12342029357b",
+    "image": "https://image.ausha.co/1JHAHfax7Z9QaTuW8gitpptFd3rm2dGbXuFM4TO0_1400x1400.jpeg?t=1759062151"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Itinéraire d'un cinéaste sauvage ",
+    "title": "S07E18 Itinéraire d'un cinéaste sauvage 4/4 : L'auteur de Voir l'automne, ce soir sur France 2 (Rémi Dupouy, Voir l'automne)",
+    "audio": "https://audio.ausha.co/ygDpVtjlkka3.mp3?t=1757244253",
+    "order": 4,
+    "guid": "f033669536c53477994ffadad7cd928ae48a6fc8",
+    "image": "https://image.ausha.co/CrtKIAxaUx62P4qkYmu42sliumovnHkMUmxtIhVt_1400x1400.jpeg?t=1760729841"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Itinéraire d'un cinéaste sauvage ",
+    "title": "S07E17 Itinéraire d'un cinéaste sauvage 3/4 : Ce qui intéresse (ou pas) les diffuseurs (Rémi Dupouy, Voir l'automne)",
+    "audio": "https://audio.ausha.co/b33AMt3wXGdP.mp3?t=1757244175",
+    "order": 3,
+    "guid": "c98907f666a59869e8e60add948e119ae6767ec0",
+    "image": "https://image.ausha.co/zDEvhUraWq6r9Ch5mV4skAc0oCZJVla8wbmuvh92_1400x1400.jpeg?t=1760729827"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Itinéraire d'un cinéaste sauvage ",
+    "title": "S07E16 Itinéraire d'un cinéaste sauvage 2/4 : Après Vivant, Voir l'automne (Rémi Dupouy, Voir l'automne)",
+    "audio": "https://audio.ausha.co/b73DRtQezaYb.mp3?t=1757244079",
+    "order": 2,
+    "guid": "a7bb70f7e8f87a25aac1255a4fb5ca4fb35ba73d",
+    "image": "https://image.ausha.co/CdSeF5N0KATe53xkRY9zKeNkR1H9IjslPHZHSjpg_1400x1400.jpeg?t=1760729817"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Itinéraire d'un cinéaste sauvage ",
+    "title": "S07E15 Itinéraire d'un cinéaste sauvage 1/4 : Percer dans le doc animalier (Rémi Dupouy, Voir l'automne)",
+    "audio": "https://audio.ausha.co/b33AMtaLzMVQ.mp3?t=1757243614",
+    "order": 1,
+    "guid": "b1d232aca16dd5b8de94af7072bb723dd427c184",
+    "image": "https://image.ausha.co/auZnBwqduTgjaf3OrpSRYYikRmUQQu0ix5nKPpP7_1400x1400.jpeg?t=1760729811"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Rewilding Patagonia",
+    "title": "S05E14 Rewilding Patagonia 3/3 : Rendre la terre à la Nature",
+    "audio": "https://audio.ausha.co/yXr10iXD8G3X.mp3?t=1760436557",
+    "order": 3,
+    "guid": "854061e5f81cbcbe1463e0866e77ba73f1c22f73",
+    "image": "https://image.ausha.co/X74rcDPtkzpcmcfb645iy2i9fxtBf1xpZQVBcoBX_1400x1400.jpeg?t=1760436629"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Rewilding Patagonia",
+    "title": "S05E13 Rewilding Patagonia 2/3 : La méthode Doug Thompkins, créateur de North Face",
+    "audio": "https://audio.ausha.co/bzKWDFqYK1q4.mp3?t=1760436444",
+    "order": 2,
+    "guid": "4eb105001055508a4c54a25665f8d76cfacf174f",
+    "image": "https://image.ausha.co/DH2jYC8YvAxdtNGkCrupy4bunXAawe0RmVQpZNp1_1400x1400.jpeg?t=1760436516"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Rewilding Patagonia",
+    "title": "S05E12 Rewilding Patagonia 1/3 : Les 4 façons de réensauvager",
+    "audio": "https://audio.ausha.co/yEWzNF8LZGAD.mp3?t=1760436104",
+    "order": 1,
+    "guid": "e61609faca343083f5629eaedc8350b02c9f47e8",
+    "image": "https://image.ausha.co/rw8bXExB4xKp01lSqpCSu7CTj5KQjcA1TA50nQsD_1400x1400.jpeg?t=1760436392"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Ami des lobbies",
+    "title": "S05E11 Ami des lobbies 3/3 : Extreme hot trip (Hadi Rassi)",
+    "audio": "https://audio.ausha.co/yXr10iNq5gXz.mp3?t=1760111513",
+    "order": 3,
+    "guid": "874a5e126efbe305dc83241a35f23e46a7b3ad4e",
+    "image": "https://image.ausha.co/idS6QXRRaIKj2LmvtrvLHZSwoemd7Zh9VZtCUbKW_1400x1400.jpeg?t=1760047488"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "Ami des lobbies",
+    "title": "S05E10 Ami des lobbies 2/3 : Ego trip (Hadi Rassi)",
+    "audio": "https://audio.ausha.co/o9mx5FpvD0aq.mp3?t=1760111482",
+    "order": 2,
+    "guid": "57c5edbc7fd78c0be0e1512c49b3f4499d5031f4",
+    "image": "https://image.ausha.co/2nkGujA9n2rX4gdP3jx6EOo4t2fxueF9uOSJJGyF_1400x1400.jpeg?t=1760047436"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Ami des lobbies",
+    "title": "S05E09 Ami des lobbies 1/3 : Soigne ta sécu ! (Hadi Rassi)",
+    "audio": "https://audio.ausha.co/ypADXiZ7zWDk.mp3?t=1760080445",
+    "order": 1,
+    "guid": "3991551b987acde053976aa1f39d427cd3d748cf",
+    "image": "https://image.ausha.co/0uBYIo0LFzxIPIDj7WkThraf2f1w5NwU6STsSjz2_1400x1400.jpeg?t=1760047369"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 4 : Les Abeilles sauvages",
+    "audio": "https://audio.ausha.co/yeDNktm70GZd.mp3?t=1751634197",
+    "order": 4,
+    "guid": "a512553721f3ecee1c23b6971ce15777b9e02add",
+    "image": "https://image.ausha.co/y1wFWZyf48db1kYMY0gk4pIAT7Z9NSh74cHze1eC_1400x1400.jpeg?t=1751635347"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Naissance d'UNE petite girafe à Paris : DEUX bonnes nouvelles !",
+    "title": "S05E08 Naissance d'UNE petite girafe à Paris : DEUX bonnes nouvelles !",
+    "audio": "https://audio.ausha.co/yvwqmu1YQ4Yb.mp3?t=1758957359",
+    "order": 1,
+    "guid": "05e29b09279c292a9881ad95ea73b39a682b55a4",
+    "image": "https://image.ausha.co/mjOwZ3BNwlJFxMD0B5jePeWwen14hHVdD0vAgP2j_1400x1400.jpeg?t=1758957533"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Les fausses idées de Charlie Kirk : Le diable est dans les détails !",
+    "title": "S05E07 Les fausses idées de Charlie Kirk : Le diable est dans les détails !",
+    "audio": "https://audio.ausha.co/BxKgNFdggDZ9.mp3?t=1758488625",
+    "order": 1,
+    "guid": "ffa7d0806c7856c2d46629bdbdd86aaeffe7b9fc",
+    "image": "https://image.ausha.co/HjAlsBtPsyTaUrNOP9QGVVjWqPSWLpkKt1trU4w7_1400x1400.jpeg?t=1758477526"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Enseigner / apprendre : Le dessous des cartes... scolaires (Laurent Jolie)",
+    "title": "S05E06 Enseigner / apprendre : Le dessous des cartes... scolaires (Laurent Jolie)",
+    "audio": "https://audio.ausha.co/bzZW3se5O1eD.mp3?t=1757754223",
+    "order": 1,
+    "guid": "c49907e56b39e1584accb361665154241cf425f9",
+    "image": "https://image.ausha.co/pcPIJBjsQCRzmaPdqS4wfZBTMFkYS4JfHiGzEAFv_1400x1400.jpeg?t=1758476775"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "Mécaniques du vivant",
+    "title": "Mécaniques du vivant, saison 3 : Les Corvidés",
+    "audio": "https://audio.ausha.co/BqYgQcdaM6ax.mp3?t=1751634160",
+    "order": 3,
+    "guid": "2f2a8d72b9ec8cda8112d22e85eb467be7591b82",
+    "image": "https://image.ausha.co/5hpIijfgCpITZqeP2icdeJwzjA4QLLEz8S8SvCcj_1400x1400.jpeg?t=1751635346"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Pourquoi cet élu parisien défend les rats ?",
+    "title": "S05E05 Pourquoi cet élu parisien défend les rats ?",
+    "audio": "https://audio.ausha.co/yvwqmu19ng9b.mp3?t=1757025317",
+    "order": 1,
+    "guid": "9614c56a246f866c7c927180fcb32bfc90a2a6f0",
+    "image": "https://image.ausha.co/uP5BI8i3tiC7uNt4g7eJzo71zFfXYtNyDKUFTE1C_1400x1400.jpeg?t=1758485061"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Zack Polanski, portrait du nouveau et original chef des écol",
+    "title": "S05E04 Zack Polanski, portrait du nouveau et original chef des écolos britanniques",
+    "audio": "https://audio.ausha.co/BMXYwFNXveYr.mp3?t=1757272011",
+    "order": 1,
+    "guid": "5cfe3ae91cff09acbfba9a70a95644f5b141f7c5",
+    "image": "https://image.ausha.co/qwTyPiOffGU9qoMKsaderDSih6Y2IK6tHTMNr4sw_1400x1400.jpeg?t=1758485015"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "L'État à nouveau condamné sur les pesticides",
+    "title": "S05E03 L'État à nouveau condamné sur les pesticides",
+    "audio": "https://audio.ausha.co/yJMz0cjA9WlA.mp3?t=1757025217",
+    "order": 1,
+    "guid": "264c8cdd569aae969b5746667ec08a8b8608a7f2",
+    "image": "https://image.ausha.co/P98KkQNEVPhK1L9AmMakO22r79efDI0YH3H3heJQ_1400x1400.jpeg?t=1758485008"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Vers une fusion des 11 parcs nationaux avec l'OFB ?",
+    "title": "S05E02 Vers une fusion des 11 parcs nationaux avec l'OFB ?",
+    "audio": "https://audio.ausha.co/oKJa0Tm3gPNE.mp3?t=1757025160",
+    "order": 1,
+    "guid": "38dacc0e277466f41d2109ab67f4683f8e00676b",
+    "image": "https://image.ausha.co/IrrHJEKfrN3gaWscyNkN1fDAcmgS2bNJwwmOTIOP_1400x1400.jpeg?t=1758485002"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "Été 2025, 3e plus chaud de l'histoire en France",
+    "title": "S05E01 Été 2025, 3e plus chaud de l'histoire en France",
+    "audio": "https://audio.ausha.co/B4RD6CzpkVR4.mp3?t=1757025030",
+    "order": 1,
+    "guid": "724a42a3977254f905203a7322935f85582af74a",
+    "image": "https://image.ausha.co/ZxTN3O2m7N1JlXZSxl1ZSeE3CNNjHKu3DGr8wbi8_1400x1400.jpeg?t=1758484997"
   }
 ]
