@@ -88,15 +88,37 @@ body{
 
   background-color:#0b0e14;
   background-image:
-      radial-gradient(circle at 15% 25%, rgba(90,140,60,0.38) 0%, transparent 55%),
-      radial-gradient(circle at 85% 75%, rgba(65,105,40,0.25) 0%, transparent 60%),
-      radial-gradient(circle at 50% 50%, rgba(120,90,45,0.15) 0%, transparent 75%);
+    radial-gradient(circle at 20% 30%, rgba(70,130,180,0.28) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(0,120,90,0.18) 0%, transparent 65%),
+    radial-gradient(circle at 50% 50%, rgba(0,40,60,0.22) 0%, transparent 70%);
 
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center center;
   -webkit-overflow-scrolling: touch; /* Force le scroll "inertiel" sur vieux iOS */
   overflow-x: hidden; /* Évite les glissements latéraux parasites */
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Derrière tout le monde, même derrière le bruit fractal */
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(70,130,180,0.28) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(0,120,90,0.18) 0%, transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(0,40,60,0.22) 0%, transparent 70%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+    /* Hack de performance crucial pour mobile */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* ===================== */
@@ -212,6 +234,15 @@ header {
     flex-shrink: 0;
     margin-right: 10.5px;
     margin-top: 12px;
+    
+    /* 1. Suppression de l'animation pulse-border */
+    /* animation: pulse-border 12s infinite ease-in-out; <-- Supprimé */
+
+    /* 2. Ajout de la douce ombre jaune */
+    /* On mélange une ombre de profondeur noire et un halo jaune (rgba(210, 179, 71, 0.4)) */
+
+/*    box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 15px rgba(210, 179, 71, 0.3); */
+
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
@@ -219,6 +250,8 @@ header {
 /* Optionnel : Un léger effet au survol pour garder du dynamisme sans vider la batterie */
 .btn-explore-themes:hover {
     transform: translateY(-2px);
+ 
+/*   box-shadow: 0 6px 15px rgba(210, 179, 71, 0.6); */
 }
 
 /* Conteneur pour aligner Titre + Bouton */
@@ -253,7 +286,6 @@ header {
     background: rgba(255,255,255,0.04);
     color: white;
     font-size: 0.95rem;
-    -webkit-tap-highlight-color: transparent;
     outline: none;
 }
 
@@ -513,17 +545,18 @@ h2,h3{
 }
 
 /* COUCHE 2 : Les Veines de la pierre (Marbrure) */
+/* COUCHE 2 : Les Veines de la pierre (Marbrure) */
 .season-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  /* SVG de turbulence basse fréquence pour les taches naturelles */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='veins'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23veins)'/%3E%3C/svg%3E");
-  opacity: 0.15;
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /* Nettoyage du SVG et encodage strict pour l'interprétation mobile */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)'/%3E%3C/svg%3E");
+    opacity: 0.12; /* Légèrement réduit pour fluidifier le scroll */
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* TEXTURES (Grain et Marbrure) */
@@ -532,8 +565,8 @@ h2,h3{
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.18; /* Texture plus brute */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.14; 
     mix-blend-mode: overlay;
     z-index: -1;
 }
@@ -774,6 +807,7 @@ h2,h3{
     border: none !important;
 
     /* LA SOLUTION : Un masque de transparence au lieu d'une couleur noire */
+    -webkit-mask-image: -webkit-linear-gradient(top, black 60%, transparent 100%); /* Syntaxe webkit historique mobile */
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
@@ -782,8 +816,8 @@ h2,h3{
     height: auto;
     min-height: 130px;
     /* On retire le masque quand c'est ouvert pour tout voir */
-    -webkit-mask-image: none;
-    mask-image: none;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
     background: rgba(255, 255, 255, 0.06);
 }
 
@@ -838,8 +872,6 @@ h2,h3{
     padding: 0;
     line-height: 1;
     flex-shrink: 0;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
 }
 
 .btn-go-up span {
@@ -914,14 +946,15 @@ h2,h3{
   justify-content: center;
   cursor: pointer;
   transition: all .3s ease;
+ */  box-shadow: 0 4px 10px rgba(0,0,0,0.2), 0 0 15px rgba(210, 179, 71, 0.3); */
   -webkit-tap-highlight-color: transparent;
+  
+  /* Supprime le contour de sélection au focus (clavier/accessibilité) */
   outline: none;
 }
-        
 .episodes-header-row {
     -webkit-tap-highlight-color: transparent;
 }
-
 .heart-empty {
     font-size: 1.3rem; /* Légèrement plus grand */
     font-weight: 900;  /* Plus gras */
@@ -1106,13 +1139,8 @@ audio {
 /* Effet plus lumineux quand on joue la musique */
 .bsg-audio-player.is-playing .bsg-whale-btn img {
     filter:
-        brightness(1.35)
-        contrast(1.2)
-        saturate(1.1)
-        drop-shadow(0 -3px 6px rgba(243, 195, 0, 0.65))
-        drop-shadow(0 0 10px rgba(243, 195, 0, 0.45))
-        drop-shadow(0 2px 2px rgba(243, 195, 0, 0.35));
-
+    drop-shadow(0 -3px 6px rgba(243, 195, 0, 0.6))
+    drop-shadow(0 1px 2px rgba(243, 195, 0, 0.4));
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
@@ -1163,7 +1191,7 @@ audio {
 /* --- Vague : Barre de progression colorée --- */
 #wave-progress {
     fill: none;
-    stroke: #d2b347;
+    stroke: #0092c7;
     stroke-width: 4;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.12s linear;
@@ -1178,7 +1206,6 @@ audio {
     border-left: 10px solid var(--primary); 
     vertical-align: middle;
 }
-
 </style>
 </head>
 <body>
@@ -1207,7 +1234,7 @@ audio {
     <div id="episodes_list"></div>
 </div>
 <a href="https://baleinesousgravillon.com/" target="_blank" id="logo-link">
-    <img id="player-img" class="is-logo" src="https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png" alt="Logo">
+    <img id="player-img" class="is-logo" src="https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png" alt="Logo">
 </a>
 <div class="player-container">
 
@@ -1228,21 +1255,25 @@ audio {
         </div>
     </div>
         <button id="whale-btn" class="bsg-whale-btn" aria-label="Lecture / Pause">
-            <img src="https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/tiger.png" alt="tiger head">
+            <img src="https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/queue-baleine.png" alt="whale tail">
         </button>
 </div>
 
-<audio id="player" preload="metadata" playsinline></audio>
+<audio id="player-a" style="display:none;" preload="auto"></audio>
+<audio id="player-b" style="display:none;" preload="auto"></audio>
 
 <script>
     
 // --- CONFIGURATION ---
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuTmTc4kUlYvP4x3381e7uDjFd3XL1rsxi0SlfrVoNzhVhHzJrlha4QX8-M6-HEpu7/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyoj1HRP-nYuZW5YHoaNXLw64iLvbcK9Q-Wxj5hN6CgPNqNt6vXlrV9qfqBcyBRzRiH0A/exec";
 let episodes = [];
 let current = 0;
 let allPlaylists = [];
+const audioA = document.getElementById('player-a');
+const audioB = document.getElementById('player-b');
 
-const audio = document.getElementById('player');
+let audio = audioA;       // Devient le lecteur actif
+let nextAudio = audioB;   // Devient le lecteur de secours
 const titleDisplay = document.getElementById('now-playing-title');
 
 const whaleBtn = document.getElementById('whale-btn');
@@ -1384,7 +1415,7 @@ async function loadPlaylists() {
  function resetPlayerImage() {
     const pImg = document.getElementById('player-img');
     if (pImg) {
-        pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
+        pImg.src = "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png";
         pImg.classList.remove('is-episode', 'zoomed');
         pImg.classList.add('is-logo');
     }
@@ -1862,6 +1893,11 @@ async function loadEpisodes(pid, encoded = false) {
         ? decodeURIComponent(escape(atob(pid))) 
         : pid;
 
+    // ⭐ SÉCURITÉ : On protège le nom de la playlist contre les apostrophes et guillemets pour les attributs HTML onclick
+    const safeCleanId = cleanId
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '&quot;');
+
     const div = document.getElementById('episodes_list');
     div.innerHTML = '<div class="loader">Plongée...</div>';
 
@@ -1895,9 +1931,10 @@ async function loadEpisodes(pid, encoded = false) {
         // 5. Construction des Hashtags
         const hashtagsHtml = (currentPl && currentPl.hashtags) 
             ? `<div class="playlist-tags-area">
-                ${currentPl.hashtags.split(' ').filter(t => t.trim() !== "").map(tag => 
-                    `<span class="tag-mini" onclick="filterByHashtag(event, '${tag}')">#${tag}</span>`
-                ).join('')}
+                ${currentPl.hashtags.split(' ').filter(t => t.trim() !== "").map(tag => {
+                    const safeTag = tag.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    return `<span class="tag-mini" onclick="filterByHashtag(event, '${safeTag}')">#${tag}</span>`;
+                }).join('')}
                </div>` 
             : "";
         
@@ -1926,14 +1963,15 @@ async function loadEpisodes(pid, encoded = false) {
         }
         
         // 7. LIGNE DES BOUTONS D'ACTION (Favoris, Plus tard, Partage)
+        // 👍 MODIFICATION : Utilisation de `safeCleanId` pour éviter de briser le onclick
         html += `
             <div class="episodes-header-row">
                 <h3>Épisodes</h3>
                 <div style="display: flex; gap: 8px;">
-                    <button class="btn-share" onclick="event.stopPropagation(); toggleSave('favorites', '${cleanId}', this)" title="Favoris">
+                    <button class="btn-share" onclick="event.stopPropagation(); toggleSave('favorites', '${safeCleanId}', this)" title="Favoris">
                         ${isFav ? '❤️' : '<span class="heart-empty">♡</span>'}
                     </button>
-                    <button class="btn-share" onclick="toggleSave('later', '${cleanId}', this)" title="À regarder plus tard">
+                    <button class="btn-share" onclick="toggleSave('later', '${safeCleanId}', this)" title="À regarder plus tard">
                         ${isLater ? '🕒' : '⏳'}
                     </button>
                     <button class="btn-share" onclick="sharePlaylist(event, '${headerEncoded}')" title="Partager cette série">
@@ -1942,12 +1980,18 @@ async function loadEpisodes(pid, encoded = false) {
                 </div>
             </div>` +
             // Liste des épisodes
-            episodes.map((e, i) => `
-                <div class="episode-item list-item-ep" id="ep-${i}" onclick="play(${i})">
-                    <span class="episode-title">${e.title}</span>
-                    <span class="play-icon"></span>
-                </div>
-            `).join('');
+            episodes.map((e, i) => {
+                // Si à l'avenir vous ajoutez des boutons spécifiques par épisode, 
+                // cette variable protégera également le titre de chaque épisode.
+                const safeTitle = e.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                
+                return `
+                    <div class="episode-item list-item-ep" id="ep-${i}" onclick="play(${i})">
+                        <span class="episode-title">${e.title}</span>
+                        <span class="play-icon"></span>
+                    </div>
+                `;
+            }).join('');
 
         div.innerHTML = html;
 
@@ -1975,58 +2019,148 @@ async function loadEpisodes(pid, encoded = false) {
 }
 
 
-async function play(i) {
-    current = i;
-    const episode = episodes[i];
-    const pImg = document.getElementById('player-img');
-
-    // 1. Mise à jour immédiate du titre (avant même le chargement audio)
-
-    // 2. Gestion de l'image
-    if (pImg) {
-        pImg.classList.remove('zoomed');
-        if (episode.image && episode.image.trim() !== "") {
-            pImg.src = episode.image;
-            pImg.classList.replace('is-logo', 'is-episode');
-        } else {
-            pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
-            pImg.classList.replace('is-episode', 'is-logo');
-        }
-    }
-
-    // 3. UI : Sélection dans la liste
-    document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
-    document.getElementById(`ep-${i}`)?.classList.add('current');
-
-    // 4. Chargement Audio
-    audio.src = episode.audio;
-    
-    try {
-        await audio.play();
-        updateMediaSession(episode.title);
-    } catch (err) {
-        console.error("Erreur lecture", err);
-        // Si l'autostart est bloqué par Chrome, on laisse le titre mais on prévient
-        titleDisplay.innerText = episode.title;
-    }
-
+// --- Fonction pour basculer les lecteurs ---
+function switchPlayers() {
+  const temp = audio;
+  audio = nextAudio;
+  nextAudio = temp;
 }
 
+// --- TA NOUVELLE FONCTION PLAY ---
+async function play(i) {
+  current = i;
+  const episode = episodes[i];
+  const pImg = document.getElementById('player-img');
 
-// --- MEDIA SESSION METADATA ---
-function updateMediaSession(title) {
+  // 1. UI : Sélection dans la liste
+  document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
+  document.getElementById(`ep-${i}`)?.classList.add('current');
+
+  // 2. Gestion de l'image
+  if (pImg) {
+    pImg.classList.remove('zoomed');
+    if (episode.image && episode.image.trim() !== "") {
+      pImg.src = episode.image;
+      pImg.classList.replace('is-logo', 'is-episode');
+    } else {
+      pImg.src = "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png";
+      pImg.classList.replace('is-episode', 'is-logo');
+    }
+  }
+
+ // 3. Assigner la source au lecteur ACTIF et lancer immédiatement
+  // SÉCURITÉ : Si la source a changé mais n'a pas pu charger correctement en arrière-plan, on force le "load"
+  if (audio.src !== episode.audio) {
+    audio.src = episode.audio;
+    audio.load();
+  }
+  
+  updateMediaSession(episode);
+
+  try {
+    await audio.play();
+  } catch (err) {
+    console.error("Échec initial de la lecture, tentative de rechargement...", err);
+    // RECOURS : Si le téléphone refuse de lire (ex: réseau coupé momentanément), on réessaie une fois après un court instant
+    setTimeout(async () => {
+      try {
+        audio.load();
+        await audio.play();
+      } catch (retryErr) {
+        console.error("Échec définitif de la lecture automatique:", retryErr);
+      }
+    }, 1000);
+  }
+
+  // 4. L'ASTUCE : Anticiper et précharger l'épisode SUIVANT sur le second lecteur
+  const nextIndex = i + 1;
+  if (nextIndex < episodes.length) {
+    nextAudio.src = episodes[nextIndex].audio;
+    nextAudio.load(); // Force le mobile à mettre le début de l'audio en cache immédiatement
+  }
+}
+
+// --- ÉCOUTEURS D'ÉVÉNEMENTS LIÉS À L'UI (À dupliquer pour les deux lecteurs) ---
+function setupAudioListeners(playerElement) {
+  playerElement.addEventListener('play', () => {
+    if (playerElement !== audio) return; // Sécurité : n'agit que si c'est le lecteur actif
+    uiPlayer.classList.add('is-playing');
+    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "playing";
+    requestWakeLock();
+  });
+
+  playerElement.addEventListener('pause', () => {
+    if (playerElement !== audio) return;
+    uiPlayer.classList.remove('is-playing');
+    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "paused";
+  });
+
+  playerElement.addEventListener('timeupdate', () => {
+    if (playerElement !== audio || isScrubbing || !audio.duration) return;
+    updateProgress(audio.currentTime / audio.duration);
+    
+    // Mise à jour de la MediaSession pour l'écran verrouillé
+    if ('mediaSession' in navigator && 'setPositionState' in navigator.mediaSession) {
+      navigator.mediaSession.setPositionState({
+        duration: audio.duration,
+        playbackRate: audio.playbackRate,
+        position: audio.currentTime
+      });
+    }
+  });
+
+  playerElement.addEventListener('loadedmetadata', () => {
+    if (playerElement !== audio) return;
+    durationEl.textContent = formatTime(audio.duration);
+  });
+
+  // GESTION DU CHANGEMENT : Quand le morceau se termine
+  playerElement.addEventListener('ended', () => {
+    if (playerElement !== audio) return;
+    
+    if (current + 1 < episodes.length) {
+      // 1. On bascule les rôles des lecteurs de manière synchrone
+      switchPlayers();
+      // 2. On lance directement le morceau préchargé (aucune attente réseau)
+      play(current + 1);
+    }
+  });
+  // SÉCURITÉ RÉSEAU : Si le lecteur rencontre une erreur de chargement (ex: perte de 4G/Wi-Fi)
+  playerElement.addEventListener('error', (e) => {
+    console.warn("Erreur de chargement détectée sur le lecteur. Tentative de récupération...", playerElement.error);
+    
+    // Si l'erreur arrive sur le lecteur actif ou sur celui en arrière-plan, on tente une reconnexon propre
+    const currentSrc = playerElement.src;
+    if (currentSrc) {
+      setTimeout(() => {
+        playerElement.load(); // Relance le téléchargement du morceau défectueux
+      }, 2000); // Attend 2 secondes que le réseau se stabilise
+    }
+  });
+}
+
+// Initialisation des écouteurs sur les deux lecteurs
+setupAudioListeners(audioA);
+setupAudioListeners(audioB);
+    
+function updateMediaSession(episode) {
     if (!('mediaSession' in navigator)) return;
 
     navigator.mediaSession.metadata = new MediaMetadata({
-        title,
+        title: episode.title,
         artist: "Baleine sous gravillon",
         album: "Le podcast du Vivant",
         artwork: [
-            { src: 'https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png', sizes: '270x270', type: 'image/png' },
-            { src: 'https://image.ausha.co/CQMRa8hZ950ZAamQlgLxjsA38VuxGAXyvYCZXFXK_400x400.jpeg', sizes: '400x400', type: 'image/jpeg' }
+            {
+                src: episode.image || "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png",
+                sizes: "512x512",
+                type: "image/png"
+            }
         ]
     });
 }
+
+
 
 // --- GESTION DU WAKE LOCK (Empêcher la mise en veille profonde) ---
 let wakeLock = null;
@@ -2039,32 +2173,7 @@ async function requestWakeLock() {
         console.log("WakeLock non supporté ou refusé");
     }
 }
-    
-// --- ÉVÉNEMENTS AUDIO ---
-audio.addEventListener('play', () => {
-    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "playing";
-});
 
-audio.addEventListener('pause', () => {
-    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "paused";
-});
-
-// --- MODIFICATION DE L'ÉVÉNEMENT ENDED ---
-audio.addEventListener('ended', async () => {
-    if (current + 1 < episodes.length) {
-        // Petit délai pour laisser le système respirer
-        setTimeout(() => {
-            play(current + 1);
-        }, 500);
-    }
-});
-
-// Relancer le WakeLock quand on reprend la lecture
-audio.addEventListener('play', () => {
-    requestWakeLock();
-    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "playing";
-});
-    
 // --- INIT ---
 loadPlaylists();
 
