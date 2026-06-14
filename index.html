@@ -2002,9 +2002,7 @@ function switchPlayers() {
   const temp = audio;
   audio = nextAudio;
   nextAudio = temp;
-}
-
-// --- TA NOUVELLE FONCTION PLAY ---
+}// --- TA NOUVELLE FONCTION PLAY ---
 async function play(i) {
     current = i;
     const episode = episodes[i];
@@ -2021,7 +2019,7 @@ async function play(i) {
             pImg.src = episode.image;
             pImg.classList.replace('is-logo', 'is-episode');
         } else {
-            pImg.src = "https://raw.githubusercontent.com/bsg-univers/nomen-bsg/refs/heads/main/media/logo-nomen.png";
+            pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
             pImg.classList.replace('is-episode', 'is-logo');
         }
     }
@@ -2069,7 +2067,7 @@ async function play(i) {
     }
 }
 
-// --- ÉCOUTEURS D'ÉVÉNEMENTS LIÉS À L'UI (À dupliquer pour les deux lecteurs) ---
+// --- ÉCOUTEURS D'ÉVÉNEMENTS LIÉS À L'UI ---
 function setupAudioListeners(playerElement) {
   playerElement.addEventListener('play', () => {
     if (playerElement !== audio) return; // Sécurité : n'agit que si c'est le lecteur actif
@@ -2084,18 +2082,12 @@ function setupAudioListeners(playerElement) {
     if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "paused";
   });
 
+  // CHANGEMENT ICI : On supprime totalement setPositionState pour éviter les sauts de titre
   playerElement.addEventListener('timeupdate', () => {
     if (playerElement !== audio || isScrubbing || !audio.duration) return;
-    updateProgress(audio.currentTime / audio.duration);
     
-    // Mise à jour de la MediaSession pour l'écran verrouillé
-    if ('mediaSession' in navigator && 'setPositionState' in navigator.mediaSession) {
-      navigator.mediaSession.setPositionState({
-        duration: audio.duration,
-        playbackRate: audio.playbackRate,
-        position: audio.currentTime
-      });
-    }
+    // On garde UNIQUEMENT la mise à jour visuelle du curseur de ton application
+    updateProgress(audio.currentTime / audio.duration);
   });
 
   playerElement.addEventListener('loadedmetadata', () => {
@@ -2104,34 +2096,34 @@ function setupAudioListeners(playerElement) {
   });
 
   // GESTION DU CHANGEMENT : Quand le morceau se termine
-    playerElement.addEventListener('ended', () => {
-        if (playerElement !== audio) return;
-    
-        if (current + 1 < episodes.length) {
-            // 1. On bascule les rôles des lecteurs de manière synchrone
-            switchPlayers();
-            
-            // 2. On force la mise à jour visuelle du tag img du DOM tout de suite
-            const nextEpisode = episodes[current + 1];
-            const pImg = document.getElementById('player-img');
-            if (pImg && nextEpisode.image && nextEpisode.image.trim() !== "") {
-                pImg.src = nextEpisode.image;
-            }
-    
-            // 3. On lance directement le morceau préchargé
-            play(current + 1);
-        }
-    });
-  // SÉCURITÉ RÉSEAU : Si le lecteur rencontre une erreur de chargement (ex: perte de 4G/Wi-Fi)
+  playerElement.addEventListener('ended', () => {
+      if (playerElement !== audio) return;
+  
+      if (current + 1 < episodes.length) {
+          // 1. On bascule les rôles des lecteurs de manière synchrone
+          switchPlayers();
+          
+          // 2. On force la mise à jour visuelle du tag img du DOM tout de suite
+          const nextEpisode = episodes[current + 1];
+          const pImg = document.getElementById('player-img');
+          if (pImg && nextEpisode.image && nextEpisode.image.trim() !== "") {
+              pImg.src = nextEpisode.image;
+          }
+  
+          // 3. On lance directement le morceau préchargé
+          play(current + 1);
+      }
+  });
+
+  // SÉCURITÉ RÉSEAU : Si le lecteur rencontre une erreur de chargement
   playerElement.addEventListener('error', (e) => {
     console.warn("Erreur de chargement détectée sur le lecteur. Tentative de récupération...", playerElement.error);
     
-    // Si l'erreur arrive sur le lecteur actif ou sur celui en arrière-plan, on tente une reconnexon propre
     const currentSrc = playerElement.src;
     if (currentSrc) {
       setTimeout(() => {
-        playerElement.load(); // Relance le téléchargement du morceau défectueux
-      }, 2000); // Attend 2 secondes que le réseau se stabilise
+        playerElement.load(); 
+      }, 2000); 
     }
   });
 }
@@ -2140,24 +2132,37 @@ function setupAudioListeners(playerElement) {
 setupAudioListeners(audioA);
 setupAudioListeners(audioB);
     
+// Cette variable permet de retenir quel épisode est en cours pour éviter les doublons
+let currentMediaSrc = null;
+
 function updateMediaSession(episode) {
     if (!('mediaSession' in navigator)) return;
 
+    // Si l'épisode est déjà le même, on met juste à jour l'état Play/Pause
+    if (currentMediaSrc === episode.audio) {
+        navigator.mediaSession.playbackState = audio.paused ? "paused" : "playing";
+        return; 
+    }
+
+    // Si c'est un nouvel épisode, on enregistre sa source
+    currentMediaSrc = episode.audio;
+
+    const defaultArtwork = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
+    const artworkUrl = (episode.image && episode.image.trim() !== "") ? episode.image : defaultArtwork;
+
+    // On envoie les infos au téléphone UNE SEULE FOIS au début de l'épisode
     navigator.mediaSession.metadata = new MediaMetadata({
-        title: episode.title,
-        artist: "Baleine sous gravillon",
-        album: "Le podcast du Vivant",
+        title: episode.title || "Épisode sans titre",
+        artist: "Baleine sous Gravillon",
+        album: "Podcast",
         artwork: [
-            {
-                src: episode.image || "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png",
-                sizes: "512x512",
-                type: "image/png"
-            }
+            { src: artworkUrl, sizes: '300x300', type: 'image/jpeg' },
+            { src: artworkUrl, sizes: '512x512', type: 'image/jpeg' }
         ]
     });
+
+    navigator.mediaSession.playbackState = "playing";
 }
-
-
 
 // --- GESTION DU WAKE LOCK (Empêcher la mise en veille profonde) ---
 let wakeLock = null;
