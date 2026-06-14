@@ -2006,56 +2006,67 @@ function switchPlayers() {
 
 // --- TA NOUVELLE FONCTION PLAY ---
 async function play(i) {
-  current = i;
-  const episode = episodes[i];
-  const pImg = document.getElementById('player-img');
+    current = i;
+    const episode = episodes[i];
+    const pImg = document.getElementById('player-img');
 
-  // 1. UI : Sélection dans la liste
-  document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
-  document.getElementById(`ep-${i}`)?.classList.add('current');
+    // 1. UI : Sélection dans la liste
+    document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
+    document.getElementById(`ep-${i}`)?.classList.add('current');
 
-  // 2. Gestion de l'image
-  if (pImg) {
-    pImg.classList.remove('zoomed');
-    if (episode.image && episode.image.trim() !== "") {
-      pImg.src = episode.image;
-      pImg.classList.replace('is-logo', 'is-episode');
-    } else {
-      pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
-      pImg.classList.replace('is-episode', 'is-logo');
+    // 2. Gestion de l'image de l'épisode actuel
+    if (pImg) {
+        pImg.classList.remove('zoomed');
+        if (episode.image && episode.image.trim() !== "") {
+            pImg.src = episode.image;
+            pImg.classList.replace('is-logo', 'is-episode');
+        } else {
+            pImg.src = "https://raw.githubusercontent.com/bsg-univers/nomen-bsg/refs/heads/main/media/logo-nomen.png";
+            pImg.classList.replace('is-episode', 'is-logo');
+        }
     }
-  }
 
- // 3. Assigner la source au lecteur ACTIF et lancer immédiatement
-  // SÉCURITÉ : Si la source a changé mais n'a pas pu charger correctement en arrière-plan, on force le "load"
-  if (audio.src !== episode.audio) {
-    audio.src = episode.audio;
-    audio.load();
-  }
-  
-  updateMediaSession(episode);
-
-  try {
-    await audio.play();
-  } catch (err) {
-    console.error("Échec initial de la lecture, tentative de rechargement...", err);
-    // RECOURS : Si le téléphone refuse de lire (ex: réseau coupé momentanément), on réessaie une fois après un court instant
-    setTimeout(async () => {
-      try {
+    // 3. Assigner la source au lecteur ACTIF et lancer immédiatement
+    if (audio.src !== episode.audio) {
+        audio.src = episode.audio;
         audio.load();
-        await audio.play();
-      } catch (retryErr) {
-        console.error("Échec définitif de la lecture automatique:", retryErr);
-      }
-    }, 1000);
-  }
+    }
 
-  // 4. L'ASTUCE : Anticiper et précharger l'épisode SUIVANT sur le second lecteur
-  const nextIndex = i + 1;
-  if (nextIndex < episodes.length) {
-    nextAudio.src = episodes[nextIndex].audio;
-    nextAudio.load(); // Force le mobile à mettre le début de l'audio en cache immédiatement
-  }
+    // Mise à jour immédiate de l'écran verrouillé
+    updateMediaSession(episode);
+
+    try {
+        await audio.play();
+    } catch (err) {
+        console.error("Échec initial de la lecture, tentative de rechargement...", err);
+        setTimeout(async () => {
+            try {
+                audio.load();
+                await audio.play();
+            } catch (retryErr) {
+                console.error("Échec définitif de la lecture automatique:", retryErr);
+            }
+        }, 1000);
+    }
+
+    // 4. L'ASTUCE CORRIGÉE : Anticiper et précharger l'audio ET l'image de l'épisode SUIVANT
+    const nextIndex = i + 1;
+    if (nextIndex < episodes.length) {
+        const nextEpisode = episodes[nextIndex];
+        
+        // Préchargement de l'audio (déjà présent dans ton code)
+        nextAudio.src = nextEpisode.audio;
+        nextAudio.load(); 
+
+        // CRUCIAL : Préchargement de l'image de l'épisode suivant dans le cache du navigateur
+        if (nextEpisode.image && nextEpisode.image.trim() !== "") {
+            const imgCache = new Image();
+            imgCache.src = nextEpisode.image; 
+            // En faisant ça, le téléphone télécharge l'image en tâche de fond immédiatement.
+            // Quand l'écran sera verrouillé et qu'on passera à l'épisode suivant, 
+            // l'image sera déjà dans le téléphone et s'affichera instantanément !
+        }
+    }
 }
 
 // --- ÉCOUTEURS D'ÉVÉNEMENTS LIÉS À L'UI (À dupliquer pour les deux lecteurs) ---
@@ -2093,16 +2104,24 @@ function setupAudioListeners(playerElement) {
   });
 
   // GESTION DU CHANGEMENT : Quand le morceau se termine
-  playerElement.addEventListener('ended', () => {
-    if (playerElement !== audio) return;
+    playerElement.addEventListener('ended', () => {
+        if (playerElement !== audio) return;
     
-    if (current + 1 < episodes.length) {
-      // 1. On bascule les rôles des lecteurs de manière synchrone
-      switchPlayers();
-      // 2. On lance directement le morceau préchargé (aucune attente réseau)
-      play(current + 1);
-    }
-  });
+        if (current + 1 < episodes.length) {
+            // 1. On bascule les rôles des lecteurs de manière synchrone
+            switchPlayers();
+            
+            // 2. On force la mise à jour visuelle du tag img du DOM tout de suite
+            const nextEpisode = episodes[current + 1];
+            const pImg = document.getElementById('player-img');
+            if (pImg && nextEpisode.image && nextEpisode.image.trim() !== "") {
+                pImg.src = nextEpisode.image;
+            }
+    
+            // 3. On lance directement le morceau préchargé
+            play(current + 1);
+        }
+    });
   // SÉCURITÉ RÉSEAU : Si le lecteur rencontre une erreur de chargement (ex: perte de 4G/Wi-Fi)
   playerElement.addEventListener('error', (e) => {
     console.warn("Erreur de chargement détectée sur le lecteur. Tentative de récupération...", playerElement.error);
