@@ -4048,5 +4048,41 @@
     "order": 1,
     "guid": "50e702f6c84dc93ede3b29a38483a2974321b5ef",
     "image": "https://image.ausha.co/Nklyp1w0ws6Ao65PC0MxjYHTTRW3PSzpetjyIVN1_1400x1400.jpeg?t=1676302146"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Devenir gardiens de la nature",
+    "title": "SPÉCIAL Devenir gardiens de la nature 4/4: Après nous, quel déluge? (Marine Calmet, avocate)",
+    "audio": "https://audio.ausha.co/BNRYPCn8m9Rx.mp3?t=1780579573",
+    "order": 454,
+    "guid": "4e3ef66986212686a58561edd7839f00a6abba9f",
+    "image": "https://image.ausha.co/FpdLiYoDa0l7I5CdLJHj5zuc4mLA5hmug3zPLaEL_1400x1400.jpeg?t=1780579534"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Devenir gardiens de la nature",
+    "title": "SPÉCIAL Devenir gardiens de la nature 3/4: Pétrole offshore et mangroves",
+    "audio": "https://audio.ausha.co/BMXYwFEzMnA6.mp3?t=1780579526",
+    "order": 455,
+    "guid": "731405eab627daee44720462e56ab2e4c5c2387a",
+    "image": "https://image.ausha.co/wAnW1yFy03Gf1VNDAy7I9Pcfk0Hr9W1undCz1ujF_1400x1400.jpeg?t=1780579460"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Devenir gardiens de la nature",
+    "title": "SPÉCIAL Devenir gardiens de la nature 2/4: À qui appartient la Terre?",
+    "audio": "https://audio.ausha.co/b22YQFDGKrek.mp3?t=1780579426",
+    "order": 456,
+    "guid": "ac0dc59c3c219aae228a2b568673b35dd5ff66c2",
+    "image": "https://image.ausha.co/YGW7x7ObqWXaoIWGZ6yXIG3otNo4NzDe64UuVHza_1400x1400.jpeg?t=1780579392"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Devenir gardiens de la nature",
+    "title": "SPÉCIAL Devenir gardiens de la nature 1/4: Anthropocène, solastalgie... kézako? (Marine Calmet, avocate)",
+    "audio": "https://audio.ausha.co/yXr10ixLa5EG.mp3?t=1780579337",
+    "order": 457,
+    "guid": "ff5d049e88887148a136c50d1abfa1ebf80e068c",
+    "image": "https://image.ausha.co/1AMCy5o5VCb5hnrZAwlt8bLPzewluJZYXr5L4VZV_1400x1400.jpeg?t=1780579289"
   }
 ]
