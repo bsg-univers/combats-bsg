@@ -4084,5 +4084,41 @@
     "order": 1,
     "guid": "ff5d049e88887148a136c50d1abfa1ebf80e068c",
     "image": "https://image.ausha.co/1AMCy5o5VCb5hnrZAwlt8bLPzewluJZYXr5L4VZV_1400x1400.jpeg?t=1780579289"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Chasse à courre",
+    "title": "SPÉCIAL Chasse à courre 4/4: Blocage politique... malgré 86% de Français contre ! (Stan Broniszewski, AVA)",
+    "audio": "https://audio.ausha.co/yEWzNFAlzrk1.mp3?t=1780585241",
+    "order": 4,
+    "guid": "49d969658593b5efd8b352ed86389ec41db9641c",
+    "image": "https://image.ausha.co/FlHzoiYYpdWANMYUDnJlvbJ2gRdpgBvN9cLkDvot_1400x1400.jpeg?t=1780585221"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Chasse à courre",
+    "title": "SPÉCIAL Chasse à courre 3/4: Les décisions des autres pays",
+    "audio": "https://audio.ausha.co/BDQAVCdaON4o.mp3?t=1780585191",
+    "order": 3,
+    "guid": "d01ebdaf9732c8505aec7c6da6e7bfefa4396504",
+    "image": "https://image.ausha.co/8VLF3FH6f9aIH68cZX1dFIl2T2Z9XgD1qL2ss9bn_1400x1400.jpeg?t=1780585160"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Chasse à courre",
+    "title": "SPÉCIAL Chasse à courre 2/4: Brisées, hourvari, hallali, curée... les mots de la vénerie",
+    "audio": "https://audio.ausha.co/bYpYOcjMRpgd.mp3?t=1780585131",
+    "order": 2,
+    "guid": "aa03162631909e2ee7e3648bc6aece92adec5352",
+    "image": "https://image.ausha.co/B6nPXn3kZvBv0xSGbGqWajA4SrIawqty3EKBSoiH_1400x1400.jpeg?t=1780585103"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Chasse à courre",
+    "title": "SPÉCIAL Chasse à courre 1/4: Une pratique féodale ? (Stan Broniszewski, AVA)",
+    "audio": "https://audio.ausha.co/oZZAEFzZQRQW.mp3?t=1780585076",
+    "order": 1,
+    "guid": "b0698a14d88a91404f5b65ca058fcf52e7aa178b",
+    "image": "https://image.ausha.co/E2LjchAAz6oWPppEvLZc5bwLVdb26tMh7cMv8tm6_1400x1400.jpeg?t=1780585037"
   }
 ]
