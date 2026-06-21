@@ -2069,11 +2069,17 @@ async function play(i) {
 
 // --- ÉCOUTEURS D'ÉVÉNEMENTS LIÉS À L'UI ---
 function setupAudioListeners(playerElement) {
+  
+  // 1. Quand la lecture est active et fluide
+  playerElement.addEventListener('playing', () => {
+    if (playerElement !== audio) return;
+    uiPlayer.classList.add('is-playing');
+  });
+
   playerElement.addEventListener('play', () => {
-    if (playerElement !== audio) return; // Sécurité : n'agit que si c'est le lecteur actif
+    if (playerElement !== audio) return;
     uiPlayer.classList.add('is-playing');
     if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "playing";
-    requestWakeLock();
   });
 
   playerElement.addEventListener('pause', () => {
@@ -2082,11 +2088,15 @@ function setupAudioListeners(playerElement) {
     if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "paused";
   });
 
-  // CHANGEMENT ICI : On supprime totalement setPositionState pour éviter les sauts de titre
+  // 2. SÉCURITÉ ORDINATEUR : Si le buffer se vide et que l'audio menace de s'arrêter
+  playerElement.addEventListener('waiting', () => {
+    if (playerElement !== audio) return;
+    console.log("Buffer vide, attente des données audio...");
+    // On ne coupe rien, on laisse le navigateur accumuler à nouveau les données
+  });
+
   playerElement.addEventListener('timeupdate', () => {
     if (playerElement !== audio || isScrubbing || !audio.duration) return;
-    
-    // On garde UNIQUEMENT la mise à jour visuelle du curseur de ton application
     updateProgress(audio.currentTime / audio.duration);
   });
 
@@ -2095,36 +2105,39 @@ function setupAudioListeners(playerElement) {
     durationEl.textContent = formatTime(audio.duration);
   });
 
-  // GESTION DU CHANGEMENT : Quand le morceau se termine
+  // 3. ENCHAÎNEMENT MOBILE (Ton approche indispensable)
   playerElement.addEventListener('ended', () => {
-      if (playerElement !== audio) return;
-  
-      if (current + 1 < episodes.length) {
-          // 1. On bascule les rôles des lecteurs de manière synchrone
-          switchPlayers();
-          
-          // 2. On force la mise à jour visuelle du tag img du DOM tout de suite
-          const nextEpisode = episodes[current + 1];
-          const pImg = document.getElementById('player-img');
-          if (pImg && nextEpisode.image && nextEpisode.image.trim() !== "") {
-              pImg.src = nextEpisode.image;
-          }
-  
-          // 3. On lance directement le morceau préchargé
-          play(current + 1);
+    if (playerElement !== audio) return;
+
+    if (current + 1 < episodes.length) {
+      switchPlayers(); // Bascule sur le lecteur qui a déjà préchargé le morceau
+      const nextEpisode = episodes[current + 1];
+      const pImg = document.getElementById('player-img');
+      if (pImg && nextEpisode.image && nextEpisode.image.trim() !== "") {
+        pImg.src = nextEpisode.image;
       }
+      play(current + 1); // Lance l'écoute continue
+    }
   });
 
-  // SÉCURITÉ RÉSEAU : Si le lecteur rencontre une erreur de chargement
+  // 4. SÉCURITÉ ANTI-COUPURE (Pour ordinateur et mobile)
+  // Si le lecteur actif plante ou s'arrête net à cause d'une baisse de réseau
   playerElement.addEventListener('error', (e) => {
-    console.warn("Erreur de chargement détectée sur le lecteur. Tentative de récupération...", playerElement.error);
+    if (playerElement !== audio) return;
     
-    const currentSrc = playerElement.src;
-    if (currentSrc) {
-      setTimeout(() => {
-        playerElement.load(); 
-      }, 2000); 
-    }
+    console.warn("Audio interrompu (réseau). Tentative de reprise immédiate...", playerElement.error);
+    
+    // On sauvegarde la position exacte où l'écoute s'est coupée
+    const currentTimeBackup = playerElement.currentTime;
+    
+    // On force le lecteur à recharger son flux à cet endroit précis
+    setTimeout(() => {
+      playerElement.load();
+      playerElement.currentTime = currentTimeBackup;
+      playerElement.play().catch(err => {
+        console.log("Le navigateur attend une action utilisateur pour reprendre.");
+      });
+    }, 1000); // Relance après 1 seconde
   });
 }
 
