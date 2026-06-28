@@ -1242,18 +1242,20 @@ audio {
 
 <script>
     
-// --- CONFIGURATION ---
+// --- CONFIGURATION & LECTEURS EN ALTERNANCE ---
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyoj1HRP-nYuZW5YHoaNXLw64iLvbcK9Q-Wxj5hN6CgPNqNt6vXlrV9qfqBcyBRzRiH0A/exec";
 let episodes = [];
 let current = 0;
 let allPlaylists = [];
+
 const audioA = document.getElementById('player-a');
 const audioB = document.getElementById('player-b');
 
-let audio = audioA;       // Devient le lecteur actif
-let nextAudio = audioB;   // Devient le lecteur de secours
-const titleDisplay = document.getElementById('now-playing-title');
+// Pointeurs dynamiques indispensables pour l'enchaînement fluide
+let activePlayer = audioA;
+let nextPlayer = audioB;
 
+const titleDisplay = document.getElementById('now-playing-title');
 const whaleBtn = document.getElementById('whale-btn');
 const waveTrack = document.getElementById('wave-track');
 const waveProgress = document.getElementById('wave-progress');
@@ -1264,42 +1266,28 @@ const uiPlayer = document.querySelector('.bsg-audio-player');
 let isScrubbing = false;
 let currentSeason = null;
 
-/* --- Play / Pause --- */
+/* --- Bouton Play / Pause global sur le lecteur actif --- */
 whaleBtn.addEventListener('click', () => {
-    audio.paused ? audio.play() : audio.pause();
+    activePlayer.paused ? activePlayer.play() : activePlayer.pause();
 });
 
-audio.addEventListener('play', () => uiPlayer.classList.add('is-playing'));
-audio.addEventListener('pause', () => uiPlayer.classList.remove('is-playing'));
-
-/* --- Durée --- */
-audio.addEventListener('loadedmetadata', () => {
-    durationEl.textContent = formatTime(audio.duration);
-});
-
-/* --- Progression --- */
-audio.addEventListener('timeupdate', () => {
-    if (isScrubbing || !audio.duration) return;
-    updateProgress(audio.currentTime / audio.duration);
-});
-
-/* --- Scrub clic + drag --- */
+/* --- Gestion de la Barre de Progression (Clic & Drag) --- */
 const seek = (clientX) => {
     const rect = waveTrack.getBoundingClientRect();
     const ratio = Math.min(Math.max(0, clientX - rect.left), rect.width) / rect.width;
-    audio.currentTime = ratio * audio.duration;
+    activePlayer.currentTime = ratio * activePlayer.duration;
     updateProgress(ratio);
 };
 
 waveTrack.addEventListener('pointerdown', e => {
     isScrubbing = true;
-    audio.pause();
+    activePlayer.pause();
     seek(e.clientX);
 });
 
 window.addEventListener('pointerup', () => {
-    if (isScrubbing && audio.currentTime < audio.duration) {
-        audio.play();
+    if (isScrubbing && activePlayer.currentTime < activePlayer.duration) {
+        activePlayer.play();
     }
     isScrubbing = false;
 });
@@ -1308,17 +1296,13 @@ window.addEventListener('pointermove', e => {
     if (isScrubbing) seek(e.clientX);
 });
 
-
 const pathLength = waveProgress.getTotalLength();
-
 waveProgress.style.strokeDasharray = pathLength;
 waveProgress.style.strokeDashoffset = pathLength;
 
 function updateProgress(ratio) {
-    waveProgress.style.strokeDashoffset =
-        pathLength - ratio * pathLength;
-
-    currentTimeEl.textContent = formatTime(audio.currentTime);
+    waveProgress.style.strokeDashoffset = pathLength - ratio * pathLength;
+    currentTimeEl.textContent = formatTime(activePlayer.currentTime);
 }
     
 function formatTime(t) {
@@ -1329,10 +1313,161 @@ function formatTime(t) {
 }
 
 
-// --- MEDIA SESSION : handlers déclarés UNE SEULE FOIS ---
+function switchPlayers() {
+    // Échange de pointeurs pur et simple sans aucune manipulation HTML
+    const temp = activePlayer;
+    activePlayer = nextPlayer;
+    nextPlayer = temp;
+}
+
+function handleEpisodeEnded(e) {
+    if (e.target !== activePlayer) return; // Évite les déclenchements fantômes
+
+    const nextIndex = current + 1;
+    if (nextIndex < episodes.length) {
+        // 1. On intervertit les rôles (le joueur qui a préchargé le morceau passe devant)
+        switchPlayers(); 
+        
+        // 2. On met à jour l'index
+        current = nextIndex;
+        const nextEpisode = episodes[current];
+
+        // 3. Lecture immédiate du morceau déjà présent dans le cache
+        activePlayer.play().catch(err => {
+            console.error("Échec de la lecture automatique en tâche de fond :", err);
+        });
+
+        // 4. Rafraîchissement des infos système (Media Session)
+        if (typeof updateMediaSession === 'function') {
+            updateMediaSession(nextEpisode);
+        }
+        
+        // Mise à jour visuelle (Utile si l'utilisateur déverrouille son écran)
+        document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
+        document.getElementById(`ep-${current}`)?.classList.add('current');
+
+        // 5. ANTICIPATION DE L'ÉPISODE SUIVANT (current + 1)
+        // Maintenant que les rôles ont changé, `nextPlayer` est devenu le lecteur libre.
+        // On y injecte le morceau d'après. Même sur écran verrouillé, le flux reste ouvert.
+        const futureIndex = current + 1;
+        if (futureIndex < episodes.length && nextPlayer) {
+            const futureEpisode = episodes[futureIndex];
+            nextPlayer.src = futureEpisode.audio;
+            nextPlayer.preload = "auto";
+            nextPlayer.load();
+        }
+    } else {
+        if (uiPlayer) uiPlayer.classList.remove('is-playing');
+    }
+}
+
+function setupAudioListeners(playerElement) {
+    playerElement.addEventListener('ended', handleEpisodeEnded);
+
+    playerElement.addEventListener('play', (e) => {
+        if (e.target !== activePlayer) return;
+        uiPlayer.classList.add('is-playing');
+        if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "playing";
+    });
+
+    playerElement.addEventListener('pause', (e) => {
+        if (e.target !== activePlayer) return;
+        uiPlayer.classList.remove('is-playing');
+        if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "paused";
+    });
+
+    playerElement.addEventListener('loadedmetadata', (e) => {
+        if (e.target !== activePlayer) return;
+        durationEl.textContent = formatTime(activePlayer.duration);
+    });
+
+    playerElement.addEventListener('timeupdate', (e) => {
+        if (e.target !== activePlayer || isScrubbing || !activePlayer.duration) return;
+        updateProgress(activePlayer.currentTime / activePlayer.duration);
+    });
+
+    // Sécurité réseau
+    playerElement.addEventListener('error', (e) => {
+        if (e.target !== activePlayer) return;
+        console.warn("Audio interrompu (réseau). Tentative de reprise...");
+        const currentTimeBackup = playerElement.currentTime;
+        setTimeout(() => {
+            playerElement.load();
+            playerElement.currentTime = currentTimeBackup;
+            playerElement.play().catch(() => console.log("Attente d'une interaction utilisateur pour relancer."));
+        }, 1000);
+    });
+}
+
+// Initialisation propre et directe des écouteurs sur les deux éléments HTML physiques
+setupAudioListeners(audioA);
+setupAudioListeners(audioB);
+
+// --- TACTIQUE DE PRECHARGEMENT SANS COUPURE ---
+async function play(i) {
+    current = i;
+    const episode = episodes[i];
+    if (!episode) return;
+    const pImg = document.getElementById('player-img');
+
+    // Réinitialisation de l'affichage du temps pour le confort visuel
+    if (currentTimeEl) currentTimeEl.textContent = "0:00";
+    if (durationEl) durationEl.textContent = "...";
+    if (waveProgress) waveProgress.style.strokeDashoffset = pathLength;
+
+    document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
+    document.getElementById(`ep-${i}`)?.classList.add('current');
+
+    if (pImg) {
+        pImg.classList.remove('zoomed');
+        if (episode.image && episode.image.trim() !== "") {
+            pImg.src = episode.image;
+            pImg.classList.replace('is-logo', 'is-episode');
+        } else {
+            pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
+            pImg.classList.replace('is-episode', 'is-logo');
+        }
+    }
+
+    // On assigne et force le chargement sur le lecteur ACTIF
+    const cleanSrc = new URL(episode.audio, window.location.href).href;
+    if (activePlayer.src !== cleanSrc) {
+        activePlayer.src = episode.audio;
+    }
+    activePlayer.load();
+
+    updateMediaSession(episode);
+
+    try {
+        await activePlayer.play();
+    } catch (err) {
+        console.warn("Autoplay en attente d'interaction.");
+        const forcePlay = () => {
+            activePlayer.play().catch(e => console.log(e));
+            window.removeEventListener('click', forcePlay);
+        };
+        window.addEventListener('click', forcePlay);
+    }
+
+    // --- PRÉPARATION AGRESSIVE POUR L'ÉCRAN VERROUILLÉ ---
+    // On prépare TOUJOURS l'épisode i + 1 sur le lecteur secondaire dès qu'un morceau commence
+    const nextIndex = i + 1;
+    if (nextIndex < episodes.length && nextPlayer) {
+        const nextEpisode = episodes[nextIndex];
+        const cleanNextSrc = new URL(nextEpisode.audio, window.location.href).href;
+        
+        if (nextPlayer.src !== cleanNextSrc) {
+            nextPlayer.src = nextEpisode.audio;
+            nextPlayer.preload = "auto";
+            nextPlayer.load(); // Téléchargement immédiat dans la mémoire tampon
+        }
+    }
+}
+
+// --- MEDIA SESSION (ÉCRAN VERROUILLÉ) ---
 if ('mediaSession' in navigator) {
-    navigator.mediaSession.setActionHandler('play', () => audio.play());
-    navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+    navigator.mediaSession.setActionHandler('play', () => activePlayer.play());
+    navigator.mediaSession.setActionHandler('pause', () => activePlayer.pause());
     navigator.mediaSession.setActionHandler('previoustrack', () => {
         if (current > 0) play(current - 1);
     });
@@ -1340,21 +1475,44 @@ if ('mediaSession' in navigator) {
         if (current + 1 < episodes.length) play(current + 1);
     });
     navigator.mediaSession.setActionHandler('seekbackward', (d) => {
-        audio.currentTime -= (d.seekOffset || 10);
+        activePlayer.currentTime -= (d.seekOffset || 10);
     });
     navigator.mediaSession.setActionHandler('seekforward', (d) => {
-        audio.currentTime += (d.seekOffset || 10);
+        activePlayer.currentTime += (d.seekOffset || 10);
     });
 }
 
+let currentMediaSrc = null;
+function updateMediaSession(episode) {
+    if (!('mediaSession' in navigator)) return;
+
+    if (currentMediaSrc === episode.audio) {
+        navigator.mediaSession.playbackState = activePlayer.paused ? "paused" : "playing";
+        return; 
+    }
+
+    currentMediaSrc = episode.audio;
+    const defaultArtwork = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
+    const artworkUrl = (episode.image && episode.image.trim() !== "") ? episode.image : defaultArtwork;
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: episode.title || "Épisode sans titre",
+        artist: "Baleine sous Gravillon",
+        album: "Podcast",
+        artwork: [
+            { src: artworkUrl, sizes: '300x300', type: 'image/jpeg' },
+            { src: artworkUrl, sizes: '512x512', type: 'image/jpeg' }
+        ]
+    });
+    navigator.mediaSession.playbackState = "playing";
+}
+
+// --- CHARGEMENT DES SÉRIES ET DES PLAYLISTS ---
 async function loadJSON(file) {
-  // On ajoute ?v= et l'heure actuelle pour ignorer le cache
   const res = await fetch(`data/${file}?v=${new Date().getTime()}`);
   return await res.json();
 }
 
-
-// --- PLAYLISTS ---
 async function loadPlaylists() {
     const urlParams = new URLSearchParams(window.location.search);
     const initialPlaylistId = urlParams.get('playlistId')
@@ -1366,17 +1524,14 @@ async function loadPlaylists() {
     const seasons = [...new Set(allPlaylists.map(p => p.season))].sort().reverse();
     const grid = document.getElementById('seasons_grid');
 
-    // Remplace cette partie :
     grid.innerHTML = seasons.map(s =>
         `<div class="season-item" onclick="showPlaylistsBySeason('${s}')">${s.replace(/saison\s?/i, '')}</div>`
     ).join('');
-        // --- Désynchronisation des galets (float organique) ---
-    const seasonItems = grid.querySelectorAll('.season-item');
     
+    const seasonItems = grid.querySelectorAll('.season-item');
     seasonItems.forEach(item => {
       item.style.setProperty('--i', Math.random() * 6);
     });
-
 
     if (initialPlaylistId) {
         const shared = allPlaylists.find(p => String(p.id).trim() === initialPlaylistId.trim());
@@ -1386,11 +1541,10 @@ async function loadPlaylists() {
             return;
         }
     }
-
     showPlaylistsBySeason(seasons[0]);
 }
 
- function resetPlayerImage() {
+function resetPlayerImage() {
     const pImg = document.getElementById('player-img');
     if (pImg) {
         pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
@@ -1406,7 +1560,6 @@ function showPlaylistsBySeason(season) {
 
     resetPlayerImage();
 
-    // Gestion de l'état actif des boutons de saison
     document.querySelectorAll('.season-item').forEach(btn => {
         const active = btn.innerText === season;
         btn.style.borderColor = active ? "var(--primary)" : "rgba(243,195,0,0.2)";
@@ -1416,62 +1569,40 @@ function showPlaylistsBySeason(season) {
     const list = allPlaylists.filter(p => p.season === season);
     const div = document.getElementById('episodes_list');
 
-    // STRUCTURE DE LA PAGE
-    // On crée l'en-tête, la barre de recherche et SURTOUT le conteneur vide pour les playlists
     div.innerHTML = `
         <div class="season-title-container">
             <h2 id="view-title">${season}</h2>
             <div style="display: flex; gap: 6px; align-items: center;">
-                <div class="btn-explore-themes" onclick="showSavedList('favorites')" title="Mes Favoris" 
-                     style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; font-size: 1.2rem;">
-                    ❤️
-                </div>
-                <div class="btn-explore-themes" onclick="showSavedList('later')" title="À regarder plus tard" 
-                     style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; font-size: 1.2rem;">
-                    🕒
-                </div>
-                <div class="btn-explore-themes" onclick="toggleHashtagLibrary()" title="Explorer par thématiques"
-                     style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; font-size: 1.2rem;">
-                    🤿
-                </div>
+                <div class="btn-explore-themes" onclick="showSavedList('favorites')" title="Mes Favoris" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">❤️</div>
+                <div class="btn-explore-themes" onclick="showSavedList('later')" title="À écouter plus tard" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🕒</div>
+                <div class="btn-explore-themes" onclick="toggleHashtagLibrary()" title="Explorer par thématiques" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🤿</div>
             </div>
         </div>
         <div class="search-container">
-            <input 
-                type="text" 
-                id="playlist-search" 
-                placeholder="Rechercher une série..."
-                autocomplete="off"
-            >
+            <input type="text" id="playlist-search" placeholder="Rechercher une série..." autocomplete="off">
         </div>
         <div id="hashtag-library" style="display: none; margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 15px; border: 1px solid rgba(210, 179, 71, 0.1);">
             <div id="hashtag-cloud" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start;"></div>
         </div>
-        
         <div id="playlists-container"></div>
     `;
 
-    // 1. On affiche la liste initiale
     renderFilteredPlaylists(list);
-
-    // 2. On active la barre de recherche
     initSearchBar();
 }
 
 function renderFilteredPlaylists(list, isGlobalSearch = false) {
     const container = document.getElementById('playlists-container');
     if (!container) return;
-
     container.innerHTML = "";
 
     if (list.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding: 40px; opacity: 0.5;">Aucun résultat trouvé dans toutes les saisons...</div>`;
+        container.innerHTML = `<div style="text-align:center; padding: 40px; opacity: 0.5;">Aucun résultat trouvé...</div>`;
         return;
     }
 
     list.forEach(p => {
         const encoded = btoa(unescape(encodeURIComponent(p.id)));
-
         const savedLater = JSON.parse(localStorage.getItem('bsg_later') || "[]");
         const isLater = savedLater.includes(String(p.id));
 
@@ -1479,13 +1610,11 @@ function renderFilteredPlaylists(list, isGlobalSearch = false) {
         banner.className = 'playlist-banner';
         banner.onclick = () => loadEpisodes(encoded, true);
 
-        // --- Génération extrait description ---
         let excerpt = "";
         if (p.description) {
             const clean = p.description.replace(/<[^>]+>/g, '').trim();
-            const maxLength = 160;
-            if (clean.length > maxLength) {
-                excerpt = clean.substring(0, maxLength);
+            if (clean.length > 160) {
+                excerpt = clean.substring(0, 160);
                 excerpt = excerpt.substring(0, excerpt.lastIndexOf(" ")) + "…";
             } else {
                 excerpt = clean;
@@ -1503,29 +1632,18 @@ function renderFilteredPlaylists(list, isGlobalSearch = false) {
         banner.innerHTML = `
             <div class="playlist-top-row" style="display: flex; align-items: flex-start; gap: 12px; width: 100%;">
                 <img src="${p.image || ''}" class="playlist-thumb" style="flex-shrink: 0;">
-                
                 <div class="playlist-info" style="flex-grow: 1; min-width: 0;">
                     <div class="playlist-info-header" style="display: flex; flex-direction: column; gap: 4px;">
                         <span class="playlist-name-text"><strong>${p.name}</strong></span>
                         ${isGlobalSearch ? `<span class="season-badge">${p.season}</span>` : ""}
                     </div>
                 </div>
-
                 <div style="display:flex; flex-direction:column; gap:6px; flex-shrink:0;">
-                    <button class="btn-share"
-                        onclick="event.stopPropagation(); sharePlaylist(event, '${encoded}')"
-                        title="Partager">🔗</button>
-
-                    <button class="btn-share"
-                        onclick="event.stopPropagation(); toggleSave('later', '${p.id}', this)"
-                        title="À regarder plus tard">
-                        ${isLater ? '🕒' : '⏳'}
-                    </button>
+                    <button class="btn-share" onclick="event.stopPropagation(); sharePlaylist(event, '${encoded}')" title="Partager">🔗</button>
+                    <button class="btn-share" onclick="event.stopPropagation(); toggleSave('later', '${p.id}', this)" title="À écouter plus tard">${isLater ? '🕒' : '⏳'}</button>
                 </div>
             </div>
-
             ${excerpt ? `<div class="playlist-excerpt">${excerpt}</div>` : ""}
-
             ${hashtagsHtml}
         `;
 
@@ -1535,7 +1653,6 @@ function renderFilteredPlaylists(list, isGlobalSearch = false) {
                 filterByHashtag(e, tagEl.dataset.tag); 
             };
         });
-
         container.appendChild(banner);
     });
 }
@@ -1546,40 +1663,20 @@ function initSearchBar() {
 
     const performSearch = () => {
         const query = input.value.toLowerCase().trim();
-
         if (query === "") {
-            // Si la barre est vide, on revient à l'affichage de la saison actuelle
-            const defaultList = allPlaylists.filter(p => p.season === currentSeason);
-            renderFilteredPlaylists(defaultList);
+            renderFilteredPlaylists(allPlaylists.filter(p => p.season === currentSeason));
             return;
         }
-
-        // RECHERCHE GLOBALE : On filtre sur TOUTES les playlists
-        const filtered = allPlaylists.filter(p => {
-            const matchText =
-                p.name.toLowerCase().includes(query) ||
-                (p.hashtags && p.hashtags.toLowerCase().includes(query));
-            return matchText;
-        });
-
-        renderFilteredPlaylists(filtered, true); // On ajoute un badge "isGlobal"
+        const filtered = allPlaylists.filter(p => p.name.toLowerCase().includes(query) || (p.hashtags && p.hashtags.toLowerCase().includes(query)));
+        renderFilteredPlaylists(filtered, true);
     };
 
     input.addEventListener('input', performSearch);
-    input.addEventListener('keydown', (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            performSearch();
-        }
-    });
 }
 
-// Appelez cette fonction au chargement
-window.addEventListener('DOMContentLoaded', resetPlayerImage);
 function toggleHashtagLibrary() {
     const library = document.getElementById('hashtag-library');
     const cloud = document.getElementById('hashtag-cloud');
-    
     if (library.style.display === 'block') {
         library.style.display = 'none';
         return;
@@ -1588,45 +1685,31 @@ function toggleHashtagLibrary() {
     let allTags = [];
     allPlaylists.forEach(p => {
         if (p.hashtags) {
-            // On sépare par espace et on nettoie les tags vides
-            const tags = p.hashtags.split(' ').filter(t => t.trim() !== "");
-            allTags = allTags.concat(tags);
+            allTags = allTags.concat(p.hashtags.split(' ').filter(t => t.trim() !== ""));
         }
     });
 
-    // Nettoyage : dédoublonnage et tri alphabétique
     const uniqueTags = [...new Set(allTags)].sort((a, b) => a.localeCompare(b));
-
-    // Utilisation de la classe .tag-mini pour la cohérence visuelle
     cloud.innerHTML = uniqueTags.map(tag => `
-        <span class="tag-mini" style="cursor:pointer; padding: 5px 12px; font-size: 0.85rem;" onclick="filterByHashtag(event, '${tag}')">
-            #${tag}
-        </span>
+        <span class="tag-mini" style="cursor:pointer; padding: 5px 12px; font-size: 0.85rem;" onclick="filterByHashtag(event, '${tag}')">#${tag}</span>
     `).join('');
-
     library.style.display = 'block';
 }
     
 function filterByHashtag(event, tag) {
     if (event) event.stopPropagation();
-    
     const div = document.getElementById('episodes_list');
 
     div.innerHTML = `
         <div class="season-title-container">
             <h2>#${tag}</h2>
-            <div class="btn-explore-themes" onclick="showPlaylistsBySeason(allPlaylists[0].season)" title="Retour">
-                ✕
-            </div>
+            <div class="btn-explore-themes" onclick="showPlaylistsBySeason(allPlaylists[0].season)" title="Retour">✕</div>
         </div>
         <div id="playlists-container"></div>
     `;
 
     const container = document.getElementById('playlists-container');
-
-    const filtered = allPlaylists.filter(p => 
-        p.hashtags && p.hashtags.includes(tag)
-    );
+    const filtered = allPlaylists.filter(p => p.hashtags && p.hashtags.includes(tag));
 
     if (!filtered.length) {
         container.innerHTML = `<p style="text-align:center; padding:40px; opacity:0.5;">Aucun résultat.</p>`;
@@ -1635,18 +1718,14 @@ function filterByHashtag(event, tag) {
 
     filtered.forEach(p => {
         const encoded = btoa(unescape(encodeURIComponent(p.id)));
-
         const savedLater = JSON.parse(localStorage.getItem('bsg_later') || "[]");
         const isLater = savedLater.includes(String(p.id));
 
-        // --- Extrait description ---
         let excerpt = "";
         if (p.description) {
             const clean = p.description.replace(/<[^>]+>/g, '').trim();
-            const maxLength = 160;
-            if (clean.length > maxLength) {
-                excerpt = clean.substring(0, maxLength);
-                excerpt = excerpt.substring(0, excerpt.lastIndexOf(" ")) + "…";
+            if (clean.length > 160) {
+                excerpt = clean.substring(0, 160) + "…";
             } else {
                 excerpt = clean;
             }
@@ -1655,8 +1734,7 @@ function filterByHashtag(event, tag) {
         const hashtagsHtml = p.hashtags
             ? `<div class="playlist-tags-area">
                 ${p.hashtags.split(' ').filter(t => t.trim() !== "").map(t =>
-                    `<span class="tag-mini ${t === tag ? 'active-tag' : ''}" 
-                        onclick="filterByHashtag(event, '${t}')">#${t}</span>`
+                    `<span class="tag-mini ${t === tag ? 'active-tag' : ''}" onclick="filterByHashtag(event, '${t}')">#${t}</span>`
                 ).join('')}
                </div>`
             : "";
@@ -1668,85 +1746,49 @@ function filterByHashtag(event, tag) {
         banner.innerHTML = `
             <div class="playlist-top-row" style="display:flex; align-items:flex-start; gap:12px; width:100%;">
                 <img src="${p.image || ''}" class="playlist-thumb">
-
                 <div class="playlist-info" style="flex:1; min-width:0;">
                     <span class="playlist-name-text"><strong>${p.name}</strong></span>
                 </div>
-
                 <div style="display:flex; flex-direction:column; gap:6px;">
-                    <button class="btn-share"
-                        onclick="event.stopPropagation(); sharePlaylist(event, '${encoded}')"
-                        title="Partager">🔗</button>
-
-                    <button class="btn-share"
-                        onclick="event.stopPropagation(); toggleSave('later', '${p.id}', this)"
-                        title="À regarder plus tard">
-                        ${isLater ? '🕒' : '⏳'}
-                    </button>
+                    <button class="btn-share" onclick="event.stopPropagation(); sharePlaylist(event, '${encoded}')" title="Partager">🔗</button>
+                    <button class="btn-share" onclick="event.stopPropagation(); toggleSave('later', '${p.id}', this)" title="À écouter plus tard">${isLater ? '🕒' : '⏳'}</button>
                 </div>
             </div>
-
             ${excerpt ? `<div class="playlist-excerpt">${excerpt}</div>` : ""}
-
             ${hashtagsHtml}
         `;
-
         container.appendChild(banner);
     });
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
     
-// --- PARTAGE NATIF + COPIE ---
 async function sharePlaylist(e, encodedPid) {
     if (e) e.stopPropagation();
-    
-    // On décode l'ID pour avoir le nom en clair (ex: "Les Baleines")
     const pid = decodeURIComponent(escape(atob(encodedPid)));
-    
-    // On construit l'URL proprement
     const url = new URL(window.location.origin + window.location.pathname);
-    
-    // IMPORTANT : On utilise le nom en clair 'pid' comme dans votre version originale
     url.searchParams.set('playlistId', pid); 
     const shareUrl = url.toString();
 
-    const shareData = {
-        title: 'Baleine sous gravillon',
-        text: `Découvrez cette série : ${pid}`,
-        url: shareUrl
-    };
-
     try {
         if (navigator.share) {
-            await navigator.share(shareData);
+            await navigator.share({ title: 'Baleine sous gravillon', text: `Découvrez cette série : ${pid}`, url: shareUrl });
         } else {
             await navigator.clipboard.writeText(shareUrl);
             showToast("Lien de la série copié !");
         }
     } catch (err) {
-        // En cas d'erreur ou d'annulation sur mobile, on copie en secours
         await navigator.clipboard.writeText(shareUrl);
-        if (err.name !== 'AbortError') {
-            showToast("Lien copié dans le presse-papier");
-        }
+        if (err.name !== 'AbortError') showToast("Lien copié dans le presse-papier");
     }
 }
 
 function showToast(message) {
     const toast = document.getElementById("toast");
-    // On met à jour le texte du toast avec le message reçu
     toast.innerText = message;
     toast.className = "show";
-    
-    setTimeout(() => { 
-        toast.className = ""; 
-    }, 3000);
+    setTimeout(() => { toast.className = ""; }, 3000);
 }
 
-// --- GESTION DES LISTES LOCALES ---
-
-// Initialisation des données si elles n'existent pas
 if (!localStorage.getItem('bsg_favorites')) localStorage.setItem('bsg_favorites', JSON.stringify([]));
 if (!localStorage.getItem('bsg_later')) localStorage.setItem('bsg_later', JSON.stringify([]));
 
@@ -1757,53 +1799,46 @@ function toggleSave(listType, playlistId, btn) {
     let message = "";
 
     if (index > -1) {
-            // SUPPRESSION
-            items.splice(index, 1);
-            if (listType === 'favorites') {
-                // On utilise un span pour appliquer l'élargissement au symbole vide
-                btn.innerHTML = '<span class="heart-empty">♡</span>';
-                message = "Retiré des favoris";
-            } else {
-                btn.innerText = '⏳';
-                message = "Retiré de 'À regarder plus tard'";
-            }
+        items.splice(index, 1);
+        if (listType === 'favorites') {
+            btn.innerHTML = '<span class="heart-empty">♡</span>';
+            message = "Retiré des favoris";
         } else {
-            // AJOUT
-            items.push(playlistId);
-            if (listType === 'favorites') {
-                btn.innerText = '❤️';
-                message = "Ajouté aux favoris !";
-            } else {
-                btn.innerText = '🕒';
-                message = "Ajouté à 'À regarder plus tard'";
-            }
+            btn.innerText = '⏳';
+            message = "Retiré de 'À écouter plus tard'";
         }
+    } else {
+        items.push(playlistId);
+        if (listType === 'favorites') {
+            btn.innerText = '❤️';
+            message = "Ajouté aux favoris !";
+        } else {
+            btn.innerText = '🕒';
+            message = "Ajouté à 'À écouter plus tard'";
+        }
+    }
 
     localStorage.setItem(key, JSON.stringify(items));
     showToast(message);
 
-    // Si on est dans la vue "Liste", on rafraîchit pour masquer l'élément supprimé
     const currentTitle = document.getElementById('view-title')?.innerText || "";
     if (currentTitle.includes("Mes") || currentTitle.includes("Regarder")) {
         showSavedList(listType);
     }
 }
+
 function resetMediaState() {
-    audio.pause();
-    audio.src = "";
-    
-    if ('mediaSession' in navigator) {
-        navigator.mediaSession.metadata = null;
-    }
+    activePlayer.pause();
+    activePlayer.src = "";
+    if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
 }
     
 function showSavedList(listType) {
     const key = 'bsg_' + listType;
     const savedIds = JSON.parse(localStorage.getItem(key) || "[]");
     const div = document.getElementById('episodes_list');
-    const title = listType === 'favorites' ? 'Mes Favoris ❤️' : 'À regarder plus tard 🕒';
+    const title = listType === 'favorites' ? 'Mes Favoris ❤️' : 'À écouter plus tard 🕒';
     
-    // Entête de la liste avec bouton retour
     div.innerHTML = `
         <div class="season-title-container">
             <h2 id="view-title">${title}</h2>
@@ -1811,15 +1846,12 @@ function showSavedList(listType) {
         </div>
     `;
 
-    // On cherche les objets playlist correspondants aux IDs sauvés
     const filtered = allPlaylists.filter(p => savedIds.includes(String(p.id)));
-
     if (filtered.length === 0) {
         div.innerHTML += `<p style="text-align:center; padding:40px; opacity:0.5;">Votre liste est vide.</p>`;
         return;
     }
 
-    // Affichage des cartes
     filtered.forEach(p => {
         const encoded = btoa(unescape(encodeURIComponent(p.id)));
         div.innerHTML += `
@@ -1836,68 +1868,30 @@ function showSavedList(listType) {
                 </div>
             </div>`;
     });
-    
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// Fonction utilitaire pour générer le HTML d'une carte (pour éviter la répétition)
-function renderPlaylistCard(p, encoded) {
-    return `
-        <div class="playlist-banner" onclick="loadEpisodes('${encoded}', true)">
-            <div class="playlist-top-row">
-                <img src="${p.image || ''}" class="playlist-thumb" alt="thumbnail">
-                <div class="playlist-info" style="flex:1; margin-left:10px;">
-                    <span class="playlist-name-text"><strong>${p.name}</strong></span>
-                </div>
-                <div style="display: flex; gap: 5px;">
-                    <button class="btn-share" style="background: rgba(255,255,255,0.1);" 
-                        onclick="event.stopPropagation(); toggleSave('favorites', '${p.id}', this)">
-                        ${JSON.parse(localStorage.getItem('bsg_favorites')).includes(p.id) ? '❤️' : '♡'}
-                    </button>
-                    <button class="btn-share" onclick="sharePlaylist(event, '${encoded}')">🔗</button>
-                </div>
-            </div>
-        </div>`;
-}
-
-// --- FONCTION COMPLÈTE : CHARGEMENT DES ÉPISODES AVEC LISTES PERSO ---
 async function loadEpisodes(pid, encoded = false) {
-    // 1. Gestion de l'affichage du dock
     const dock = document.querySelector('.nav-dock');
     if (dock) dock.classList.add('is-static');
     
-    // 2. Décodage de l'ID de la playlist
-    const cleanId = encoded 
-        ? decodeURIComponent(escape(atob(pid))) 
-        : pid;
-
-    // ⭐ SÉCURITÉ : On protège le nom de la playlist contre les apostrophes et guillemets pour les attributs HTML onclick
-    const safeCleanId = cleanId
-        .replace(/'/g, "\\'")
-        .replace(/"/g, '&quot;');
+    const cleanId = encoded ? decodeURIComponent(escape(atob(pid))) : pid;
+    const safeCleanId = cleanId.replace(/'/g, "\\'").replace(/"/g, '&quot;');
 
     const div = document.getElementById('episodes_list');
     div.innerHTML = '<div class="loader">Plongée...</div>';
 
     try {
-        // 3. Récupération des données de la playlist et des listes locales
         const currentPl = allPlaylists.find(p => String(p.id).trim() === cleanId.trim());
         const playlistDesc = currentPl ? currentPl.description : "";
         
-        // Lecture du localStorage pour l'état des boutons
         const savedFavs = JSON.parse(localStorage.getItem('bsg_favorites') || "[]");
         const savedLater = JSON.parse(localStorage.getItem('bsg_later') || "[]");
         const isFav = savedFavs.includes(cleanId);
         const isLater = savedLater.includes(cleanId);
 
-        // 4. Charger les épisodes depuis le JSON
-        const res = await fetch(`data/episodes.json?v=${new Date().getTime()}`);
-        const allEpisodes = await res.json();
-
-        // Filtrer et trier les épisodes de cette playlist
-        episodes = allEpisodes
-            .filter(e => String(e.playlistId).trim() === cleanId.trim())
-            .sort((a, b) => (a.order || 0) - (b.order || 0));
+        const allEpisodes = await loadJSON("episodes.json");
+        episodes = allEpisodes.filter(e => String(e.playlistId).trim() === cleanId.trim()).sort((a, b) => (a.order || 0) - (b.order || 0));
 
         if (!episodes.length) {
             div.innerHTML = '<p style="text-align:center; padding:20px;">Aucun épisode trouvé.</p>';
@@ -1905,18 +1899,14 @@ async function loadEpisodes(pid, encoded = false) {
         }
 
         const headerEncoded = btoa(unescape(encodeURIComponent(cleanId)));
-        
-        // 5. Construction des Hashtags
         const hashtagsHtml = (currentPl && currentPl.hashtags) 
             ? `<div class="playlist-tags-area">
                 ${currentPl.hashtags.split(' ').filter(t => t.trim() !== "").map(tag => {
-                    const safeTag = tag.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-                    return `<span class="tag-mini" onclick="filterByHashtag(event, '${safeTag}')">#${tag}</span>`;
+                    return `<span class="tag-mini" onclick="filterByHashtag(event, '${tag.replace(/'/g, "\\'")}')">#${tag}</span>`;
                 }).join('')}
                </div>` 
             : "";
         
-        // 6. Construction du HTML de l'en-tête
         let html = `
             <div class="playlist-header-container">
                 <h2>${cleanId}</h2>
@@ -1929,267 +1919,60 @@ async function loadEpisodes(pid, encoded = false) {
             ${hashtagsHtml} 
         `;
         
-        // Bloc Description
         if (playlistDesc && playlistDesc.trim() !== "") {
             html += `
             <div class="playlist-description-container" id="desc-container" onclick="this.classList.toggle('expanded')">
-                <div class="playlist-description-content">
-                    ${playlistDesc}
-                </div>
+                <div class="playlist-description-content">${playlistDesc}</div>
                 <span class="read-more-hint">Lire la suite...</span>
             </div>`;
         }
         
-        // 7. LIGNE DES BOUTONS D'ACTION (Favoris, Plus tard, Partage)
-        // 👍 MODIFICATION : Utilisation de `safeCleanId` pour éviter de briser le onclick
         html += `
             <div class="episodes-header-row">
                 <h3>Épisodes</h3>
                 <div style="display: flex; gap: 8px;">
-                    <button class="btn-share" onclick="event.stopPropagation(); toggleSave('favorites', '${safeCleanId}', this)" title="Favoris">
+                    <button class="btn-share" onclick="event.stopPropagation(); toggleSave('favorites', '${safeCleanId}', this)">
                         ${isFav ? '❤️' : '<span class="heart-empty">♡</span>'}
                     </button>
-                    <button class="btn-share" onclick="toggleSave('later', '${safeCleanId}', this)" title="À regarder plus tard">
-                        ${isLater ? '🕒' : '⏳'}
-                    </button>
-                    <button class="btn-share" onclick="sharePlaylist(event, '${headerEncoded}')" title="Partager cette série">
-                        🔗
-                    </button>
+                    <button class="btn-share" onclick="toggleSave('later', '${safeCleanId}', this)">${isLater ? '🕒' : '⏳'}</button>
+                    <button class="btn-share" onclick="sharePlaylist(event, '${headerEncoded}')">🔗</button>
                 </div>
             </div>` +
-            // Liste des épisodes
-            episodes.map((e, i) => {
-                // Si à l'avenir vous ajoutez des boutons spécifiques par épisode, 
-                // cette variable protégera également le titre de chaque épisode.
-                const safeTitle = e.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-                
-                return `
-                    <div class="episode-item list-item-ep" id="ep-${i}" onclick="play(${i})">
-                        <span class="episode-title">${e.title}</span>
-                        <span class="play-icon"></span>
-                    </div>
-                `;
-            }).join('');
+            episodes.map((e, i) => `
+                <div class="episode-item list-item-ep" id="ep-${i}" onclick="play(${i})">
+                    <span class="episode-title">${e.title}</span>
+                    <span class="play-icon"></span>
+                </div>
+            `).join('');
 
         div.innerHTML = html;
 
-        // 8. Finalisation (Scroll et corrections de liens)
         setTimeout(() => {
-            const titleSection = div.querySelector('.playlist-header-container');
-            if (titleSection) {
-                titleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            div.querySelector('.playlist-header-container')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
 
-        const descLinks = div.querySelectorAll('.playlist-description-content a');
-        descLinks.forEach(link => {
+        div.querySelectorAll('.playlist-description-content a').forEach(link => {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
         });        
 
-        // Lecture auto du premier épisode
-        play(0);
-
+        play(0); // Lecture automatique du premier épisode
     } catch (err) {
         console.error('Erreur chargement episodes', err);
         div.innerHTML = '<p>Erreur de chargement des épisodes.</p>';
     }
 }
 
-
-// --- Fonction pour basculer les lecteurs ---
-function switchPlayers() {
-  const temp = audio;
-  audio = nextAudio;
-  nextAudio = temp;
-}// --- TA NOUVELLE FONCTION PLAY ---
-async function play(i) {
-    current = i;
-    const episode = episodes[i];
-    const pImg = document.getElementById('player-img');
-
-    // 1. UI : Sélection dans la liste
-    document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
-    document.getElementById(`ep-${i}`)?.classList.add('current');
-
-    // 2. Gestion de l'image de l'épisode actuel
-    if (pImg) {
-        pImg.classList.remove('zoomed');
-        if (episode.image && episode.image.trim() !== "") {
-            pImg.src = episode.image;
-            pImg.classList.replace('is-logo', 'is-episode');
-        } else {
-            pImg.src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
-            pImg.classList.replace('is-episode', 'is-logo');
-        }
-    }
-
-    // 3. Assigner la source au lecteur ACTIF et lancer immédiatement
-    if (audio.src !== episode.audio) {
-        audio.src = episode.audio;
-        audio.load();
-    }
-
-    // Mise à jour immédiate de l'écran verrouillé
-    updateMediaSession(episode);
-
-    try {
-        await audio.play();
-    } catch (err) {
-        console.error("Échec initial de la lecture, tentative de rechargement...", err);
-        setTimeout(async () => {
-            try {
-                audio.load();
-                await audio.play();
-            } catch (retryErr) {
-                console.error("Échec définitif de la lecture automatique:", retryErr);
-            }
-        }, 1000);
-    }
-
-    // 4. L'ASTUCE CORRIGÉE : Anticiper et précharger l'audio ET l'image de l'épisode SUIVANT
-    const nextIndex = i + 1;
-    if (nextIndex < episodes.length) {
-        const nextEpisode = episodes[nextIndex];
-        
-        // Préchargement de l'audio (déjà présent dans ton code)
-        nextAudio.src = nextEpisode.audio;
-        nextAudio.load(); 
-
-        // CRUCIAL : Préchargement de l'image de l'épisode suivant dans le cache du navigateur
-        if (nextEpisode.image && nextEpisode.image.trim() !== "") {
-            const imgCache = new Image();
-            imgCache.src = nextEpisode.image; 
-            // En faisant ça, le téléphone télécharge l'image en tâche de fond immédiatement.
-            // Quand l'écran sera verrouillé et qu'on passera à l'épisode suivant, 
-            // l'image sera déjà dans le téléphone et s'affichera instantanément !
-        }
-    }
-}
-
-// --- ÉCOUTEURS D'ÉVÉNEMENTS LIÉS À L'UI ---
-function setupAudioListeners(playerElement) {
-  
-  // 1. Quand la lecture est active et fluide
-  playerElement.addEventListener('playing', () => {
-    if (playerElement !== audio) return;
-    uiPlayer.classList.add('is-playing');
-  });
-
-  playerElement.addEventListener('play', () => {
-    if (playerElement !== audio) return;
-    uiPlayer.classList.add('is-playing');
-    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "playing";
-  });
-
-  playerElement.addEventListener('pause', () => {
-    if (playerElement !== audio) return;
-    uiPlayer.classList.remove('is-playing');
-    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = "paused";
-  });
-
-  // 2. SÉCURITÉ ORDINATEUR : Si le buffer se vide et que l'audio menace de s'arrêter
-  playerElement.addEventListener('waiting', () => {
-    if (playerElement !== audio) return;
-    console.log("Buffer vide, attente des données audio...");
-    // On ne coupe rien, on laisse le navigateur accumuler à nouveau les données
-  });
-
-  playerElement.addEventListener('timeupdate', () => {
-    if (playerElement !== audio || isScrubbing || !audio.duration) return;
-    updateProgress(audio.currentTime / audio.duration);
-  });
-
-  playerElement.addEventListener('loadedmetadata', () => {
-    if (playerElement !== audio) return;
-    durationEl.textContent = formatTime(audio.duration);
-  });
-
-  // 3. ENCHAÎNEMENT MOBILE (Ton approche indispensable)
-  playerElement.addEventListener('ended', () => {
-    if (playerElement !== audio) return;
-
-    if (current + 1 < episodes.length) {
-      switchPlayers(); // Bascule sur le lecteur qui a déjà préchargé le morceau
-      const nextEpisode = episodes[current + 1];
-      const pImg = document.getElementById('player-img');
-      if (pImg && nextEpisode.image && nextEpisode.image.trim() !== "") {
-        pImg.src = nextEpisode.image;
-      }
-      play(current + 1); // Lance l'écoute continue
-    }
-  });
-
-  // 4. SÉCURITÉ ANTI-COUPURE (Pour ordinateur et mobile)
-  // Si le lecteur actif plante ou s'arrête net à cause d'une baisse de réseau
-  playerElement.addEventListener('error', (e) => {
-    if (playerElement !== audio) return;
-    
-    console.warn("Audio interrompu (réseau). Tentative de reprise immédiate...", playerElement.error);
-    
-    // On sauvegarde la position exacte où l'écoute s'est coupée
-    const currentTimeBackup = playerElement.currentTime;
-    
-    // On force le lecteur à recharger son flux à cet endroit précis
-    setTimeout(() => {
-      playerElement.load();
-      playerElement.currentTime = currentTimeBackup;
-      playerElement.play().catch(err => {
-        console.log("Le navigateur attend une action utilisateur pour reprendre.");
-      });
-    }, 1000); // Relance après 1 seconde
-  });
-}
-
-// Initialisation des écouteurs sur les deux lecteurs
-setupAudioListeners(audioA);
-setupAudioListeners(audioB);
-    
-// Cette variable permet de retenir quel épisode est en cours pour éviter les doublons
-let currentMediaSrc = null;
-
-function updateMediaSession(episode) {
-    if (!('mediaSession' in navigator)) return;
-
-    // Si l'épisode est déjà le même, on met juste à jour l'état Play/Pause
-    if (currentMediaSrc === episode.audio) {
-        navigator.mediaSession.playbackState = audio.paused ? "paused" : "playing";
-        return; 
-    }
-
-    // Si c'est un nouvel épisode, on enregistre sa source
-    currentMediaSrc = episode.audio;
-
-    const defaultArtwork = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png";
-    const artworkUrl = (episode.image && episode.image.trim() !== "") ? episode.image : defaultArtwork;
-
-    // On envoie les infos au téléphone UNE SEULE FOIS au début de l'épisode
-    navigator.mediaSession.metadata = new MediaMetadata({
-        title: episode.title || "Épisode sans titre",
-        artist: "Baleine sous Gravillon",
-        album: "Podcast",
-        artwork: [
-            { src: artworkUrl, sizes: '300x300', type: 'image/jpeg' },
-            { src: artworkUrl, sizes: '512x512', type: 'image/jpeg' }
-        ]
-    });
-
-    navigator.mediaSession.playbackState = "playing";
-}
-
-// --- GESTION DU WAKE LOCK (Empêcher la mise en veille profonde) ---
+// --- GESTION DU WAKE LOCK ---
 let wakeLock = null;
 async function requestWakeLock() {
     try {
-        if ('wakeLock' in navigator) {
-            wakeLock = await navigator.wakeLock.request('screen');
-        }
-    } catch (err) {
-        console.log("WakeLock non supporté ou refusé");
-    }
+        if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen');
+    } catch (err) { console.log("WakeLock refusé"); }
 }
 
-// --- INIT ---
+// --- INITIALISATION ---
+window.addEventListener('DOMContentLoaded', resetPlayerImage);
 loadPlaylists();
 
 if ('serviceWorker' in navigator) {
@@ -2198,20 +1981,13 @@ if ('serviceWorker' in navigator) {
     
 document.addEventListener('click', function(e) {
     const pImg = document.getElementById('player-img');
-    const pLink = document.getElementById('logo-link');
     if (!pImg) return;
-
-    // Si on clique sur l'image
     if (e.target === pImg) {
-        // SI C'EST UN ÉPISODE : On gère le zoom et on bloque le lien
         if (pImg.classList.contains('is-episode')) {
-            e.preventDefault(); // Empêche le lien de s'ouvrir
+            e.preventDefault();
             pImg.classList.toggle('zoomed');
         } 
-        // SI C'EST LE LOGO : On laisse le comportement par défaut (le lien s'ouvre)
-    } 
-    // Si on clique ailleurs alors que c'est zoomé, on dézoome
-    else if (pImg.classList.contains('zoomed')) {
+    } else if (pImg.classList.contains('zoomed')) {
         pImg.classList.remove('zoomed');
     }
 });
@@ -2219,14 +1995,12 @@ document.addEventListener('click', function(e) {
 window.addEventListener('scroll', function() {
     const logo = document.querySelector('.logo-main');
     if (logo) {
-        let scrollPos = window.scrollY;
-        // Le logo s'efface progressivement sur les 150 premiers pixels de scroll
-        let opacity = 1 - (scrollPos / 150);
+        let opacity = 1 - (window.scrollY / 150);
         logo.style.opacity = Math.max(opacity, 0);
     }
 });
-document.getElementById('player-img').src = "https://raw.githubusercontent.com/bsg-univers/combats-bsg/refs/heads/main/media/combats.png"; 
 </script>
-    <div id="toast">Lien de la série copié !</div>
+<div id="toast">Lien de la série copié !</div>
 </body>
-</html>
+
+
