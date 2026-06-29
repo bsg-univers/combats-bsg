@@ -516,9 +516,9 @@ h2,h3{
         inset 10px 15px 35px rgba(255, 255, 255, 0.04) !important;
 
     will-change: transform;
-    animation: float-organic infinite alternate ease-in-out;
+    /* animation: float-organic infinite alternate ease-in-out;
     animation-duration: calc(4s + var(--i, 0) * 0.5s);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
 }
@@ -650,7 +650,7 @@ h2,h3{
     border-radius: 50%; /* On peut même le mettre en rond */
     border: 1px solid rgba(243, 195, 0, 0.4);
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    animation: playerSubtleWave 12s infinite ease-in-out;
+    /* animation: playerSubtleWave 12s infinite ease-in-out; */
     pointer-events: auto; 
     cursor: pointer;
 }
@@ -962,7 +962,7 @@ h2,h3{
     /* On garde du padding sur les côtés, mais ZERO en bas pour coller la barre */
     padding: 0px 0px 0px; 
     box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.5);
-    animation: playerSubtleWave 15s ease-in-out infinite;
+    /* animation: playerSubtleWave 15s ease-in-out infinite; */
 }
 /* --- LE TITRE (Espace rétabli) --- */
 .now-playing {
@@ -1325,10 +1325,10 @@ function handleEpisodeEnded(e) {
 
     const nextIndex = current + 1;
     if (nextIndex < episodes.length) {
-        // 1. On intervertit les rôles (le joueur qui a préchargé le morceau passe devant)
+        // 1. On intervertit les rôles (le joueur secondaire passe devant)
         switchPlayers(); 
         
-        // 2. On met à jour l'index
+        // 2. On met à jour l'index global
         current = nextIndex;
         const nextEpisode = episodes[current];
 
@@ -1337,24 +1337,41 @@ function handleEpisodeEnded(e) {
             console.error("Échec de la lecture automatique en tâche de fond :", err);
         });
 
-        // 4. Rafraîchissement des infos système (Media Session)
+        // --- CORRECTION : FORCER LA MISE À JOUR DE L'IMAGE SUR ÉCRAN VERROUILLÉ ---
+        // On force la Media Session à se rafraîchir IMMÉDIATEMENT avec les infos du nouvel épisode
         if (typeof updateMediaSession === 'function') {
             updateMediaSession(nextEpisode);
         }
         
-        // Mise à jour visuelle (Utile si l'utilisateur déverrouille son écran)
+        // 4. Mise à jour visuelle de la jaquette et de la liste (si l'utilisateur rallume son écran)
+        const pImg = document.getElementById('player-img');
+        if (pImg) {
+            pImg.classList.remove('zoomed');
+            if (nextEpisode.image && nextEpisode.image.trim() !== "") {
+                pImg.src = nextEpisode.image;
+                pImg.classList.replace('is-logo', 'is-episode');
+            } else {
+                pImg.src = "https://raw.githubusercontent.com/bsg-univers/lecteur-bsg/refs/heads/main/media/logo-BSG.png";
+                pImg.classList.replace('is-episode', 'is-logo');
+            }
+        }
         document.querySelectorAll('.episode-item').forEach(el => el.classList.remove('current'));
         document.getElementById(`ep-${current}`)?.classList.add('current');
 
-        // 5. ANTICIPATION DE L'ÉPISODE SUIVANT (current + 1)
-        // Maintenant que les rôles ont changé, `nextPlayer` est devenu le lecteur libre.
-        // On y injecte le morceau d'après. Même sur écran verrouillé, le flux reste ouvert.
+        // 5. Anticipation de l'épisode encore après (current + 1)
         const futureIndex = current + 1;
         if (futureIndex < episodes.length && nextPlayer) {
             const futureEpisode = episodes[futureIndex];
             nextPlayer.src = futureEpisode.audio;
             nextPlayer.preload = "auto";
             nextPlayer.load();
+
+            // SÉCURITÉ IMAGE : On force le navigateur à mettre en cache la PROCHAINE image 
+            // pour qu'elle soit instantanément disponible au prochain tour
+            if (futureEpisode.image && futureEpisode.image.trim() !== "") {
+                const imgCache = new Image();
+                imgCache.src = futureEpisode.image;
+            }
         }
     } else {
         if (uiPlayer) uiPlayer.classList.remove('is-playing');
