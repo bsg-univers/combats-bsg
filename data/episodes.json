@@ -4120,5 +4120,41 @@
     "order": 1,
     "guid": "b0698a14d88a91404f5b65ca058fcf52e7aa178b",
     "image": "https://image.ausha.co/E2LjchAAz6oWPppEvLZc5bwLVdb26tMh7cMv8tm6_1400x1400.jpeg?t=1780585037"
+  },
+  {
+    "episodeId": "4",
+    "playlistId": "SPÉCIAL Barbaries",
+    "title": "SPÉCIAL Barbaries 4/4: Une loi a minima ? (Loïc Dombreval, député, vétérinaire, auteur)",
+    "audio": "https://audio.ausha.co/b3XAQFQ5rLld.mp3?t=1780587148",
+    "order": 4,
+    "guid": "3122412eaa716ea0c415affef93bd2def1babb89",
+    "image": "https://image.ausha.co/zCOsDzfraTGY9ZCVK2B65PZIqyqfega2cppQHN66_1400x1400.jpeg?t=1780587104"
+  },
+  {
+    "episodeId": "3",
+    "playlistId": "SPÉCIAL Barbaries",
+    "title": "SPÉCIAL Barbaries 3/4: Quelles sont les pires cruautés ?",
+    "audio": "https://audio.ausha.co/BNRYPCpGxKjB.mp3?t=1780587067",
+    "order": 3,
+    "guid": "dfa426ae350afcd57ce3ff418d60047deebf16dc",
+    "image": "https://image.ausha.co/K1InIFvLf0GkefUmafpVuJab1Pf8uSedfSnSzxLf_1400x1400.jpeg?t=1780587039"
+  },
+  {
+    "episodeId": "2",
+    "playlistId": "SPÉCIAL Barbaries",
+    "title": "SPÉCIAL Barbaries 2/4: Être vegan, trop radical ou pas ?",
+    "audio": "https://audio.ausha.co/ypADXiGq7e7R.mp3?t=1780587031",
+    "order": 2,
+    "guid": "035c19157e11190a956ff3eaaa7fba4398e98f5c",
+    "image": "https://image.ausha.co/x0DpCPE4h4NUrAQtmiVVwLtQJgpujwul8rcPCSaV_1400x1400.jpeg?t=1780586996"
+  },
+  {
+    "episodeId": "1",
+    "playlistId": "SPÉCIAL Barbaries",
+    "title": "SPÉCIAL Barbaries 1/4: L'incontournable lobby des chasseurs (Loïc Dombreval, député, vétérinaire, auteur)",
+    "audio": "https://audio.ausha.co/BqKgRF1wOvDR.mp3?t=1780586959",
+    "order": 1,
+    "guid": "beb2631829d94813b2f5476448039312110877f6",
+    "image": "https://image.ausha.co/rLwZCBt2gYWWs6KctOfJbm8aD8bjaI3KQiVGExbQ_1400x1400.jpeg?t=1780586929"
   }
 ]
